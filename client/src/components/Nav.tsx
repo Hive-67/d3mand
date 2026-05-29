@@ -76,8 +76,8 @@ export default function Nav() {
         <div className="font-display text-lg sm:text-xl font-black tracking-[0.18em] text-[var(--gold)] text-glow-gold transition-transform group-hover:scale-[1.02]">
           D3MAND
         </div>
-        <div className="hidden sm:block font-mono text-[0.55rem] uppercase tracking-[0.3em] text-[var(--muted-foreground)] -mt-0.5">
-          The Destiny 3 Community Hub
+        <div className="hidden sm:block font-mono text-[0.55rem] tracking-[0.15em] text-[var(--muted-foreground)] -mt-0.5">
+          www.d3mandhub.com
         </div>
       </a>
 
