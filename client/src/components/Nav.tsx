@@ -110,11 +110,16 @@ export default function Nav() {
           >
             <a
               href={link.href}
-              className="relative font-display text-[0.65rem] uppercase tracking-[0.25em] transition-all duration-200"
+              className="relative font-display uppercase tracking-[0.25em] transition-all duration-300 ease-out inline-block"
               style={
                 activeHref === link.href
-                  ? { color: "var(--gold)", textShadow: "0 0 12px color-mix(in srgb, var(--gold) 70%, transparent)" }
-                  : undefined
+                  ? {
+                      color: "var(--gold)",
+                      fontSize: "0.72rem",
+                      transform: "translateY(-2px)",
+                      textShadow: "0 0 14px color-mix(in srgb, var(--gold) 65%, transparent)",
+                    }
+                  : { fontSize: "0.65rem", transform: "translateY(0px)" }
               }
             >
               {link.label}
