@@ -58,17 +58,17 @@ export default function AboutSection() {
             </div>
 
             {/* 2-year countdown — where the guardian looks */}
-            <div className="mt-8 w-full max-w-[300px] border border-[var(--gold)]/20 bg-[var(--gold)]/3 p-4">
+            <div className="mt-8 w-full border border-[var(--gold)]/20 bg-[var(--gold)]/3 p-4">
               <div className="font-mono text-[0.55rem] uppercase tracking-[0.35em] text-[var(--gold-dim)] mb-3">
                 {T.about.countdown}
               </div>
-              <div className="flex items-end gap-3 mb-4 flex-wrap">
+              <div className="flex items-end gap-2 mb-4">
                 <Unit value={d} label={T.about.days} digits={3} />
-                <span className="font-display text-2xl font-black text-[var(--gold)]/40 mb-3">:</span>
+                <span className="font-display text-lg font-black text-[var(--gold)]/40 mb-2.5">:</span>
                 <Unit value={h} label={T.about.hours} digits={2} />
-                <span className="font-display text-2xl font-black text-[var(--gold)]/40 mb-3">:</span>
+                <span className="font-display text-lg font-black text-[var(--gold)]/40 mb-2.5">:</span>
                 <Unit value={m} label={T.about.min} digits={2} />
-                <span className="font-display text-2xl font-black text-[var(--gold)]/40 mb-3">:</span>
+                <span className="font-display text-lg font-black text-[var(--gold)]/40 mb-2.5">:</span>
                 <Unit value={s} label={T.about.sec} digits={2} />
               </div>
               <div className="h-px w-full bg-[var(--gold)]/10 relative overflow-hidden">
