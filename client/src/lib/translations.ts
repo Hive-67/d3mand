@@ -9,6 +9,7 @@ const t = {
       tools: "Outils",
       arguments: "Arguments",
       kit: "Kit Presse",
+      videos: "Réactions",
       sign: "✦ Signer",
     },
     hero: {
@@ -107,6 +108,12 @@ const t = {
       hashtags: "Hashtags officiels",
       resources: "Ressources directes",
     },
+    videos: {
+      tag: "La communauté réagit",
+      title1: "Ils ont",
+      title2: "tout quitté pour en parler",
+      subtitle: "Des gardiens qui filment leur réaction, leurs souvenirs, leur deuil. La preuve que Destiny n'est pas un jeu comme les autres.",
+    },
     kit: {
       tag: "Créateurs de contenu & Presse",
       title: "Kit",
@@ -132,6 +139,7 @@ const t = {
       tools: "Tools",
       arguments: "Arguments",
       kit: "Press Kit",
+      videos: "Reactions",
       sign: "✦ Sign",
     },
     hero: {
@@ -229,6 +237,12 @@ const t = {
       copyUrl: "Copy hub link",
       hashtags: "Official hashtags",
       resources: "Direct resources",
+    },
+    videos: {
+      tag: "The community reacts",
+      title1: "They stopped everything",
+      title2: "to talk about it",
+      subtitle: "Guardians filming their reactions, their memories, their grief. Proof that Destiny is not just another game.",
     },
     kit: {
       tag: "Content creators & Press",

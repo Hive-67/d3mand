@@ -12,6 +12,7 @@ import AboutSection from "@/components/sections/AboutSection";
 import ArgumentsSection from "@/components/sections/ArgumentsSection";
 import Hero from "@/components/sections/Hero";
 import KitSection from "@/components/sections/KitSection";
+import VideosSection from "@/components/sections/VideosSection";
 import PetitionsSection from "@/components/sections/PetitionsSection";
 import ServerSlamSection from "@/components/sections/ServerSlamSection";
 import StatsBar from "@/components/sections/StatsBar";
@@ -106,6 +107,7 @@ export default function Home() {
         <ArgumentsSection />
         <ToolsSection />
         <KitSection />
+        <VideosSection />
         <Footer />
       </div>
 
