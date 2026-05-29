@@ -90,7 +90,7 @@ export default function Nav() {
         </div>
       </button>
 
-      <ul ref={listRef} className="hidden lg:flex items-center gap-6 relative py-1">
+      <ul ref={listRef} className="hidden lg:flex items-center gap-3 relative py-1">
         {/* Sliding underline */}
         <div
           aria-hidden
@@ -112,11 +112,11 @@ export default function Nav() {
                 if (el) itemRefs.current.set(link.href, el);
                 else itemRefs.current.delete(link.href);
               }}
-              className="relative font-display uppercase tracking-[0.25em] transition-all duration-300 ease-out inline-block hover:text-[var(--gold)]"
+              className="relative font-display uppercase tracking-[0.1em] transition-all duration-300 ease-out inline-block hover:text-[var(--gold)]"
               style={
                 activeHref === link.href
-                  ? { color: "var(--gold)", fontSize: "0.72rem", transform: "translateY(-2px)", textShadow: "0 0 14px color-mix(in srgb, var(--gold) 65%, transparent)" }
-                  : { fontSize: "0.65rem", transform: "translateY(0px)", color: "var(--muted-foreground)" }
+                  ? { color: "var(--gold)", fontSize: "0.65rem", transform: "translateY(-2px)", textShadow: "0 0 14px color-mix(in srgb, var(--gold) 65%, transparent)" }
+                  : { fontSize: "0.6rem", transform: "translateY(0px)", color: "var(--muted-foreground)" }
               }
             >
               {link.label}
