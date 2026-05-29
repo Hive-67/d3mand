@@ -60,7 +60,7 @@ npm run build
 ## 4. État actuel du site (sections dans l'ordre)
 
 1. **Hero** — titre « Destiny 3 », 4 métriques (signatures · 9 juin · $3.6B · −$765M), 3 boutons d'action
-2. **Manifeste** — texte + compte à rebours 2 ans + panneau scrollable (Comment agir / Kit Créateurs / Timeline) + formulaire de contact
+2. **Manifeste** — texte + compte à rebours 2 ans (jours/heures/minutes/secondes) + panneau scrollable (Comment agir · Timeline) + formulaire de contact
 3. **StatsBar** — bande de stats (5 chiffres clés)
 4. **Pétitions** — 2 pétitions avec barres de progression (live via Google Sheet)
 5. **Server Slam** — compte à rebours 9 juin (placé sous les pétitions, **sans lien dans le nav** — à supprimer après le 9 juin)
@@ -153,4 +153,11 @@ Ouvre un panel pour configurer :
 | `guardian.png` | `client/public/` | Gardien section Manifeste |
 | `destiny-logo.png` | `client/public/` | Logo Hero (déjà sans fond) |
 
-Ces deux fichiers sont déjà dans le dépôt git, aucune action nécessaire.
+Ces deux fichiers sont déjà dans le dépôt git. Après chaque build, vérifier qu'ils sont bien copiés dans `client/dist/` avant de déployer sur le serveur.
+
+---
+
+## 10. Déploiement
+
+Après `npm run build`, les fichiers à déployer sont dans `client/dist/public/`.
+S'assurer que `guardian.png` et `destiny-logo.png` sont présents dans le dossier déployé (ils doivent être à la racine du site, ex : `https://d3mandhub.com/guardian.png`).
