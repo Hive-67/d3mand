@@ -8,7 +8,6 @@ import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import Starfield from "@/components/Starfield";
 import SetupModal from "@/components/SetupModal";
-import SyncBar from "@/components/SyncBar";
 import AboutSection from "@/components/sections/AboutSection";
 import ArgumentsSection from "@/components/sections/ArgumentsSection";
 import Hero from "@/components/sections/Hero";
@@ -80,6 +79,14 @@ export default function Home() {
     return () => window.clearInterval(id);
   }, [sync, csvUrl]);
 
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.shiftKey && e.key === "A") setSetupOpen(true);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
   const onApply = (url: string) => {
     localStorage.setItem(STORAGE_KEY, url);
     setCsvUrl(url);
@@ -101,16 +108,6 @@ export default function Home() {
         <KitSection />
         <Footer />
       </div>
-
-      <SyncBar
-        state={syncState}
-        label={syncLabel}
-        onClick={
-          syncState === "error"
-            ? () => setSetupOpen(true)
-            : undefined
-        }
-      />
 
       <SetupModal
         open={setupOpen}
