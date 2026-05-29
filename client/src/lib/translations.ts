@@ -74,16 +74,6 @@ const t = {
         { title: "Partager avec ta communauté", desc: "Serveur Discord, groupe privé, entourage — les liens prêts à diffuser." },
         { title: "Regarder les vidéos d'adieu", desc: "Les meilleures vidéos sur la fin de Destiny 2. C'est ça qui montre que c'est réel. N'hésite pas à parler de D3MAND Hub dans les commentaires YouTube !" },
       ],
-      kitTag: "Kit Créateurs — Faire une vidéo",
-      kitIntro: "Tu veux parler de D3 sur ta chaîne ? On t'a préparé :",
-      kitItems: [
-        "Les 6 arguments clés (pourquoi D3 est viable)",
-        "Les chiffres qui tuent (765M de pertes, 300k signatures)",
-        "Les angles d'attaque (nostalgie, viabilité financière, absence de concurrent)",
-        "Les vidéos à référencer",
-        "Les sources pour tout vérifier",
-      ],
-      kitNote: "Pas de prise de tête. Juste la matière pour faire une vidéo solide. Contenu ajusté et mis à jour régulièrement.",
       timelineTag: "Timeline du mouvement",
       timelineIntro: "On met à jour régulièrement pendant 2 ans.",
       timelineItems: [
@@ -310,16 +300,6 @@ const t = {
         { title: "Share with your community", desc: "Discord server, private group, friends — links ready to spread." },
         { title: "Watch the farewell videos", desc: "The best videos about the end of Destiny 2. This is what shows it's real. Don't hesitate to mention D3MAND Hub in YouTube comments!" },
       ],
-      kitTag: "Creator Kit — Make a video",
-      kitIntro: "Want to talk about D3 on your channel? We've prepared:",
-      kitItems: [
-        "The 6 key arguments (why D3 is viable)",
-        "The killer stats ($765M in losses, 300k signatures)",
-        "The angles (nostalgia, financial viability, no competition)",
-        "The videos to reference",
-        "The sources to verify everything",
-      ],
-      kitNote: "No hassle. Just the material to make a solid video. Content adjusted and updated regularly.",
       timelineTag: "Movement timeline",
       timelineIntro: "We update regularly for 2 years.",
       timelineItems: [

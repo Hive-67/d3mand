@@ -124,21 +124,6 @@ export default function AboutSection() {
                 </ul>
               </div>
 
-              {/* Kit créateurs */}
-              <div>
-                <div className="codex-tag mb-3 text-[0.6rem]">{T.about.kitTag}</div>
-                <p className="text-sm text-[var(--foreground)]/80 mb-3">{T.about.kitIntro}</p>
-                <ul className="space-y-1.5 mb-3">
-                  {T.about.kitItems.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-[var(--muted-foreground)]">
-                      <span className="mt-1 size-1 shrink-0 bg-[var(--gold)]" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <p className="text-sm text-[var(--muted-foreground)] italic">{T.about.kitNote}</p>
-              </div>
-
               {/* Timeline */}
               <div>
                 <div className="codex-tag mb-3 text-[0.6rem]">{T.about.timelineTag}</div>
