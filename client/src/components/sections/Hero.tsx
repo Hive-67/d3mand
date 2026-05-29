@@ -7,21 +7,8 @@
  * - Métriques en colonnes : 122K+, 6, 9 juin, $3.6B
  * - Hashtags discrets en bas à droite
  */
-import { useEffect, useState } from "react";
-import { ArrowUpRight, Hexagon } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import AnimatedCounter from "../AnimatedCounter";
-
-const SLAM_DATE = new Date("2026-06-09T17:00:00Z");
-
-function useDaysLeft() {
-  const calc = () => Math.max(0, Math.ceil((SLAM_DATE.getTime() - Date.now()) / 86400000));
-  const [days, setDays] = useState(calc);
-  useEffect(() => {
-    const id = window.setInterval(() => setDays(calc()), 60000);
-    return () => clearInterval(id);
-  }, []);
-  return days;
-}
 
 type HeroProps = {
   totalSignatures: number;
@@ -35,40 +22,12 @@ function getSublabel(total: number): string {
 }
 
 export default function Hero({ totalSignatures }: HeroProps) {
-  const daysLeft = useDaysLeft();
   return (
     <header className="relative isolate overflow-hidden">
       {/* Outer frame — subtle codex border */}
       <div className="pointer-events-none absolute inset-x-4 top-4 bottom-4 border border-[var(--gold)]/10" aria-hidden />
 
       <div className="relative mx-auto max-w-[1400px] px-6 pt-16 pb-20 sm:px-10 sm:pt-20 sm:pb-28 lg:px-16">
-        {/* Server Slam badge — top right, live countdown */}
-        <a
-          href="#server-slam"
-          className="group absolute right-6 top-10 sm:right-10 sm:top-12 lg:right-16 inline-flex flex-col items-start gap-2 border border-[var(--flame)]/60 bg-[var(--flame)]/5 px-4 py-3 transition-all hover:bg-[var(--flame)]/10 hover:shadow-[0_0_24px_rgba(255,107,53,0.35)] animate-fade-up"
-          style={{ animationDelay: "0.1s" }}
-        >
-          {/* Header row */}
-          <div className="flex items-center gap-2">
-            <span className="relative inline-flex">
-              <span className="absolute inset-0 animate-ping rounded-full bg-[var(--flame)]/60" />
-              <Hexagon className="relative size-3 fill-[var(--flame)] stroke-none" />
-            </span>
-            <span className="font-mono text-[0.6rem] uppercase tracking-[0.35em] text-[var(--flame)]">
-              Server Slam
-            </span>
-          </div>
-          {/* Live day counter */}
-          <div className="flex items-baseline gap-1.5">
-            <span className="font-display text-2xl font-black text-[var(--flame)] leading-none tabular-nums">
-              J{daysLeft > 0 ? `−${daysLeft}` : "·0"}
-            </span>
-          </div>
-          {/* Static date */}
-          <div className="font-mono text-[0.55rem] uppercase tracking-[0.25em] text-[var(--flame)]/60">
-            9 juin 2026
-          </div>
-        </a>
 
         {/* Eyebrow */}
         <div
