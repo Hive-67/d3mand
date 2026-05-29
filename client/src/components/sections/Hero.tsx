@@ -132,7 +132,7 @@ export default function Hero({ totalSignatures }: HeroProps) {
           <Metric value="6" label="Pétitions actives" />
           <Metric value="9 juin" label="Server Slam" />
           <Metric value="$3.6B" label="Rachat Bungie" />
-          <Metric value="−$705M" label="Pertes Sony/Bungie" accent="flame" />
+          <Metric value="−$765M" label="Pertes Sony/Bungie" accent="flame" />
         </div>
 
         {/* Hashtags column — bottom right */}

@@ -92,53 +92,43 @@ export default function AboutSection() {
           </div>
 
           {/* Right — body text */}
-          <div className="space-y-5 text-base sm:text-lg leading-relaxed text-[var(--foreground)]/80 font-light lg:pt-16">
+          <div className="space-y-6 text-base sm:text-lg leading-relaxed text-[var(--foreground)]/80 font-light lg:pt-16">
             <p>
-              <span className="font-semibold text-[var(--gold)]">D3MAND</span>, c'est{" "}
-              <em className="not-italic font-medium text-[var(--foreground)]">DEMAND</em> +{" "}
-              <em className="not-italic font-medium text-[var(--foreground)]">D3</em> — Destiny 3. Ce nom, on ne l'a pas inventé.
-              Il a émergé organiquement de la communauté active de Destiny : des passionnés qui ont décidé
-              qu'ils n'allaient pas regarder leur franchise s'éteindre sans rien dire.
+              Sony a racheté Bungie{" "}
+              <span className="font-semibold text-[var(--foreground)]">3,6 milliards de dollars</span>.
+              Aujourd'hui :{" "}
+              <span className="font-semibold text-[var(--flame)]">765 millions de dollars de pertes</span>.{" "}
+              <span className="font-semibold text-[var(--foreground)]">400 développeurs licenciés</span>.
+              Destiny 2 se ferme le{" "}
+              <span className="font-semibold text-[var(--flame)]">9 juin 2026</span>.
             </p>
 
             <p>
-              Le{" "}
-              <span className="font-semibold text-[var(--flame)]">9 juin 2026</span>, c'est officiel — c'est la date
-              de la dernière mise à jour de Destiny 2. Bungie l'a annoncé : le cycle se ferme. Après des années
-              de contenu, un moteur graphique à bout de souffle et une gestion catastrophique depuis le rachat
-              par Sony —{" "}
-              <span className="font-semibold text-[var(--foreground)]">400 développeurs licenciés</span>,{" "}
-              <span className="font-semibold text-[var(--flame)]">705 millions de dollars de pertes</span>,{" "}
-              <span className="font-semibold text-[var(--foreground)]">3,6 milliards investis</span> pour ce résultat — le rideau tombe.
+              Aucun concurrent n'a jamais réussi à remplacer Destiny.{" "}
+              <span className="font-semibold text-[var(--foreground)]">Douze ans. Zéro équivalent.</span>
             </p>
 
             <p>
-              Sauf que Destiny n'a pas de concurrent. Pas d'équivalent. Personne n'a réussi à reproduire ce
-              que cette franchise fait depuis dix ans : un shooter MMO avec un lore profond, un gunfeel unique
-              et une communauté d'une fidélité rare.{" "}
-              <span className="font-semibold text-[var(--foreground)]">Sony le sait. L'argent est là.</span> Ce
-              n'est pas une question de faisabilité — c'est une question de volonté.
+              <span className="font-semibold text-[var(--gold)]">220 000 signatures en 4 jours.</span>{" "}
+              Spontanées. Pas organisées. Pas payées.
             </p>
 
             <p>
-              Ce que la communauté exige, ce n'est pas un DLC de plus. C'est un{" "}
-              <span className="font-semibold text-[var(--gold)]">vrai Destiny 3</span> — nouveau moteur, nouvelles bases.
-              Que ça continue l'histoire ou qu'on reparte à l'Âge d'Or, aux origines de l'humanité au faîte
-              de sa puissance. Du moment que c'est fait sérieusement.
+              Ce n'est pas une pétition de plus. C'est{" "}
+              <span className="font-semibold text-[var(--foreground)]">un hub</span> : toutes les pétitions,
+              tous les outils, un seul endroit. Zéro pub. Zéro monétisation. Juste organiser cette demande
+              pour la rendre incontournable.
             </p>
 
-            <p>
-              Créer une énième pétition nous semblait inutile. On a préféré construire{" "}
-              <span className="font-semibold text-[var(--foreground)]">un hub</span> : toutes les pétitions réunies,
-              tous les outils pour amplifier le mouvement, pour faire du bruit là où ça compte.
-              Ce site a une durée de vie de{" "}
-              <span className="font-semibold text-[var(--gold)]">deux ans</span>. Sans annonce, il ferme.
-              Avec une annonce, il se transforme.
+            <p className="font-semibold text-[var(--foreground)]">
+              Sony cherche comment inverser la tendance.{" "}
+              <span className="text-[var(--gold)]">Montrez-leur où est la réponse.</span>
             </p>
 
-            <p className="font-mono text-sm text-[var(--gold-dim)] tracking-wide pt-2">
-              Fantaisiste ? Un peu.{" "}
-              <span className="text-[var(--gold)]">Irréalisable ? À des années-lumière de ça.</span>
+            <p className="font-mono text-sm text-[var(--muted-foreground)] tracking-wide pt-2 border-l-2 border-[var(--gold)]/30 pl-4">
+              Le site sera actif et mis à jour régulièrement pendant{" "}
+              <span className="text-[var(--gold)]">deux ans</span>.
+              Sans annonce officielle d'un Destiny 3, le site fermera.
             </p>
           </div>
         </div>
