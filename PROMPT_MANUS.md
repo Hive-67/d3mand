@@ -19,15 +19,8 @@ cd d3mand
 git checkout claude/site-visual-design-5LZF6
 cd client
 npm install --legacy-peer-deps
-npm run dev
-```
-
-Le site tourne sur **http://localhost:3000**
-
-Pour builder en production :
-```bash
 npm run build
-# Les fichiers sont dans client/dist/
+# Les fichiers à déployer sont dans client/dist/public/
 ```
 
 ---
@@ -60,12 +53,12 @@ npm run build
 ## 4. État actuel du site (sections dans l'ordre)
 
 1. **Hero** — titre « Destiny 3 », 4 métriques (signatures · 9 juin · $3.6B · −$765M), 3 boutons d'action
-2. **Manifeste** — texte + compte à rebours 2 ans (jours/heures/minutes/secondes) + panneau scrollable (Comment agir · Timeline) + formulaire de contact
+2. **Manifeste** — texte + compte à rebours 2 ans (000j : 00h : 00m : 00s) + panneau scrollable (Comment agir · Timeline) + formulaire de contact
 3. **StatsBar** — bande de stats (5 chiffres clés)
 4. **Pétitions** — 2 pétitions avec barres de progression (live via Google Sheet)
 5. **Server Slam** — compte à rebours 9 juin (placé sous les pétitions, **sans lien dans le nav** — à supprimer après le 9 juin)
 6. **Arguments** — 6 arguments numérotés que Sony doit entendre
-7. **Outils** — générateur de messages FR/EN + 6 cartes outils + contacts Sony/Bungie + code d'intégration
+7. **Outils** — générateur de messages FR/EN (Twitter/Reddit/YouTube/Sony/Discord) + 6 cartes outils + contacts Sony/Bungie (clic = copie presse-papier) + code d'intégration. Sur le tab Sony : les adresses mail apparaissent directement sous le message pour copie rapide.
 8. **Vidéos** — onglets Adieux / Info + suggestion par email
 9. **Messages** — livre d'or modéré
 10. **Footer** — disclaimer + compteur de visites (counterapi.dev)
@@ -153,11 +146,20 @@ Ouvre un panel pour configurer :
 | `guardian.png` | `client/public/` | Gardien section Manifeste |
 | `destiny-logo.png` | `client/public/` | Logo Hero (déjà sans fond) |
 
-Ces deux fichiers sont déjà dans le dépôt git. Après chaque build, vérifier qu'ils sont bien copiés dans `client/dist/` avant de déployer sur le serveur.
+Ces deux fichiers sont dans le dépôt git et copiés automatiquement dans `client/dist/public/` lors du build. **Vérifier leur présence avant de déployer** — ils doivent être accessibles à la racine du site (`https://d3mandhub.com/guardian.png`).
 
 ---
 
 ## 10. Déploiement
 
-Après `npm run build`, les fichiers à déployer sont dans `client/dist/public/`.
-S'assurer que `guardian.png` et `destiny-logo.png` sont présents dans le dossier déployé (ils doivent être à la racine du site, ex : `https://d3mandhub.com/guardian.png`).
+```bash
+git checkout claude/site-visual-design-5LZF6
+git pull origin claude/site-visual-design-5LZF6
+cd client
+npm install --legacy-peer-deps
+npm run build
+```
+
+Les fichiers à déployer sont dans **`client/dist/public/`**.
+Copier tout le contenu de ce dossier à la racine du serveur web de `d3mandhub.com`.
+Vérifier que `guardian.png` et `destiny-logo.png` sont bien présents à la racine.
