@@ -193,7 +193,7 @@ const t = {
       cards: [
         { title: "Tracker de signatures", desc: "Toutes les pétitions recensées avec leur progression en temps quasi-réel. Bookmark cette page pour suivre l'évolution quotidienne.", cta: "Voir les pétitions" },
         { title: "Événement Server Slam", desc: "Le 9 juin 2026, connectez-vous à Destiny 2 avec tous vos gardiens. Chaque connexion compte dans les métriques Sony.", cta: "Voir le compte à rebours" },
-        { title: "Kit YouTubeur", desc: "Points de langage, données chiffrées et titres accrocheurs pour structurer une vidéo sur le sujet et maximiser l'impact.", cta: "Voir le kit" },
+        { title: "Arguments clés", desc: "Les 6 arguments chiffrés pour convaincre : viabilité financière, communauté mondiale, lien social. Prêts à utiliser dans vos contenus.", cta: "Voir les arguments" },
         { title: "Email Sony Direct", desc: "Un template d'e-mail formaté, professionnel, à envoyer aux adresses publiques des relations presse et investisseurs de Sony Interactive Entertainment.", cta: "Générer l'email" },
         { title: "Lien universel à partager", desc: "Un seul lien qui regroupe tout. Partage cette URL partout pour concentrer l'audience sur un hub unique.", cta: "Copier l'URL" },
         { title: "Hashtags officiels", desc: "Utilise systématiquement ces hashtags pour maximiser la visibilité sur les réseaux.", cta: "" },
@@ -219,7 +219,7 @@ const t = {
       copyEmbed: "Copier le code",
       embedCopied: "Code copié !",
       items: [
-        { title: "Angle vidéo #1", desc: "« Sony a perdu $760M sur Bungie — Destiny 3 est leur seule bouée de sauvetage »", tag: "Finance · Analytique · Viral" },
+        { title: "Angle vidéo #1", desc: "« Sony a perdu $765M sur Bungie — Destiny 3 est leur seule bouée de sauvetage »", tag: "Finance · Analytique · Viral" },
         { title: "Angle vidéo #2", desc: "« 300 000 gardiens ont signé en quelques jours — la plus grande pétition gaming de 2026 »", tag: "News · Breaking · Communauté" },
         { title: "Angle vidéo #3", desc: "« Le Server Slam : quand les joueurs hackent les métriques pour sauver leur jeu »", tag: "Stratégie · Activisme · Innovant" },
         { title: "Angle vidéo #4", desc: "« Destiny 3 vs Marathon : quel jeu devrait Bungie vraiment faire ? »", tag: "Débat · Opinion · Engagement" },
@@ -429,7 +429,7 @@ const t = {
       cards: [
         { title: "Signature tracker", desc: "All petitions tracked with near-real-time progress. Bookmark this page to follow daily updates.", cta: "View petitions" },
         { title: "Server Slam event", desc: "On June 9, 2026, log in to Destiny 2 with all your guardians. Every login counts in Sony's metrics.", cta: "View countdown" },
-        { title: "Creator kit", desc: "Talking points, data and catchy titles to structure a video on the topic and maximize impact.", cta: "View kit" },
+        { title: "Key arguments", desc: "6 data-backed arguments to convince: financial viability, global community, irreplaceable social bond. Ready to use in your content.", cta: "View arguments" },
         { title: "Direct Sony email", desc: "A formatted, professional email template to send to Sony Interactive Entertainment's public PR and investor relations addresses.", cta: "Generate email" },
         { title: "Universal link to share", desc: "One link that brings it all together. Share this URL everywhere to funnel the audience to a single hub.", cta: "Copy URL" },
         { title: "Official hashtags", desc: "Consistently use these hashtags to maximize visibility on social networks.", cta: "" },
@@ -455,7 +455,7 @@ const t = {
       copyEmbed: "Copy code",
       embedCopied: "Code copied!",
       items: [
-        { title: "Video angle #1", desc: "\"Sony lost $760M on Bungie — Destiny 3 is their only lifeline\"", tag: "Finance · Analytics · Viral" },
+        { title: "Video angle #1", desc: "\"Sony lost $765M on Bungie — Destiny 3 is their only lifeline\"", tag: "Finance · Analytics · Viral" },
         { title: "Video angle #2", desc: "\"300,000 Guardians signed in days — the biggest gaming petition of 2026\"", tag: "News · Breaking · Community" },
         { title: "Video angle #3", desc: "\"The Server Slam: when players hack metrics to save their game\"", tag: "Strategy · Activism · Innovative" },
         { title: "Video angle #4", desc: "\"Destiny 3 vs Marathon: which game should Bungie really make?\"", tag: "Debate · Opinion · Engagement" },
