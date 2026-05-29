@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLang } from "@/contexts/LanguageContext";
 
 const TARGET_DATE = new Date("2026-06-09T16:00:00Z"); // 18h00 Paris (CEST = UTC+2)
 
@@ -16,6 +17,7 @@ const pad = (n: number) => String(n).padStart(2, "0");
 
 export default function Countdown() {
   const [t, setT] = useState(getDiff);
+  const { T } = useLang();
 
   useEffect(() => {
     const id = window.setInterval(() => setT(getDiff()), 1000);
@@ -23,10 +25,10 @@ export default function Countdown() {
   }, []);
 
   const units = [
-    { label: "Jours", value: pad(t.d) },
-    { label: "Heures", value: pad(t.h) },
-    { label: "Minutes", value: pad(t.m) },
-    { label: "Secondes", value: pad(t.s) },
+    { label: T.serverSlam.days, value: pad(t.d) },
+    { label: T.serverSlam.hours, value: pad(t.h) },
+    { label: T.serverSlam.min, value: pad(t.m) },
+    { label: T.serverSlam.sec, value: pad(t.s) },
   ];
 
   return (

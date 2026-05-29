@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BarChart3, Calendar, Check, Copy, Link2, Mail, Megaphone, Mic } from "lucide-react";
 import { toast } from "sonner";
 import { useReveal } from "@/hooks/useReveal";
+import { useLang } from "@/contexts/LanguageContext";
 import { MESSAGES, MESSAGES_EN, PLATFORM_LABELS, type Platform } from "@/lib/messages";
 
 const HASHTAGS = ["#Destiny3", "#MakeDestiny3", "#ServerSlam", "#D3MAND", "#BringBackDestiny"];
@@ -10,6 +11,7 @@ const HASHTAGS = ["#Destiny3", "#MakeDestiny3", "#ServerSlam", "#D3MAND", "#Brin
 export default function ToolsSection() {
   const headerRef = useReveal();
   const genRef = useReveal();
+  const { T } = useLang();
   const [platform, setPlatform] = useState<Platform>("twitter");
   const [msgLang, setMsgLang] = useState<"fr" | "en">("fr");
   const [copiedFr, setCopiedFr] = useState(false);
@@ -18,29 +20,33 @@ export default function ToolsSection() {
   const copyFr = async () => {
     await navigator.clipboard.writeText(MESSAGES[platform]);
     setCopiedFr(true);
-    toast.success("Message FR copié");
+    toast.success(T.tools.toastCopied);
     setTimeout(() => setCopiedFr(false), 2000);
   };
 
   const copyEn = async () => {
     await navigator.clipboard.writeText(MESSAGES_EN[platform]);
     setCopiedEn(true);
-    toast.success("Message EN copied");
+    toast.success(T.tools.toastCopied);
     setTimeout(() => setCopiedEn(false), 2000);
   };
 
   const copyUrl = async () => {
     await navigator.clipboard.writeText("https://d3mandhub.com/");
-    toast.success("URL copiée");
+    toast.success(T.tools.toastUrlCopied);
   };
+
+  const cards = T.tools.cards;
 
   return (
     <section id="tools" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10 lg:px-16">
         <div ref={headerRef} className="mb-12">
-          <div className="codex-tag mb-2 text-[0.6rem]">Arsenal communautaire</div>
+          <div className="codex-tag mb-2 text-[0.6rem]">{T.tools.tag}</div>
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight">
-            Tous les <em className="not-italic text-[var(--gold)]">outils</em> pour agir
+            {T.tools.title}{" "}
+            <em className="not-italic text-[var(--gold)]">{T.tools.titleGold}</em>{" "}
+            {T.tools.titleEnd}
           </h2>
         </div>
 
@@ -49,9 +55,9 @@ export default function ToolsSection() {
           {/* Header row */}
           <div className="flex items-start justify-between flex-wrap gap-4 mb-6">
             <div>
-              <div className="codex-tag text-[0.6rem]">Générateur de messages</div>
+              <div className="codex-tag text-[0.6rem]">{T.tools.generatorTag}</div>
               <div className="mt-1 font-display text-lg font-bold text-[var(--foreground)]">
-                Copie-colle un message prêt à l'emploi
+                {T.tools.generatorTitle}
               </div>
             </div>
             {/* FR / EN toggle */}
@@ -102,7 +108,7 @@ export default function ToolsSection() {
                 }`}
               >
                 {copiedFr ? <Check className="size-4" /> : <Copy className="size-4" />}
-                {copiedFr ? "Copié !" : "Copier le message FR"}
+                {copiedFr ? T.tools.copied : T.tools.copy}
               </button>
             </div>
           ) : (
@@ -117,7 +123,7 @@ export default function ToolsSection() {
                 }`}
               >
                 {copiedEn ? <Check className="size-4" /> : <Copy className="size-4" />}
-                {copiedEn ? "Copied!" : "Copy EN message"}
+                {copiedEn ? T.tools.copied : T.tools.copy}
               </button>
             </div>
           )}
@@ -125,12 +131,12 @@ export default function ToolsSection() {
 
         {/* Tool grid */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-          <ToolCard icon={<BarChart3 className="size-5" />} title="Tracker de signatures" desc="Toutes les pétitions recensées avec leur progression en temps quasi-réel. Bookmark cette page pour suivre l'évolution quotidienne." cta={{ href: "#petitions", label: "Voir les pétitions" }} />
-          <ToolCard icon={<Calendar className="size-5" />} title="Événement Server Slam" desc="Le 9 juin 2026, connectez-vous à Destiny 2 avec tous vos gardiens. Chaque connexion compte dans les métriques Sony." cta={{ href: "#server-slam", label: "Voir le compte à rebours", variant: "flame" }} />
-          <ToolCard icon={<Mic className="size-5" />} title="Kit YouTubeur" desc="Points de langage, données chiffrées et titres accrocheurs pour structurer une vidéo sur le sujet et maximiser l'impact." cta={{ href: "#kit", label: "Voir le kit" }} />
-          <ToolCard icon={<Mail className="size-5" />} title="Email Sony Direct" desc="Un template d'e-mail formaté, professionnel, à envoyer aux adresses publiques des relations presse et investisseurs de Sony Interactive Entertainment." action={() => { setPlatform("sony"); document.getElementById("tools")?.scrollIntoView({ behavior: "smooth" }); }} actionLabel="Générer l'email" />
-          <ToolCard icon={<Link2 className="size-5" />} title="Lien universel à partager" desc="Un seul lien qui regroupe tout. Partage cette URL partout pour concentrer l'audience sur un hub unique." action={copyUrl} actionLabel="Copier l'URL" />
-          <ToolCard icon={<Megaphone className="size-5" />} title="Hashtags officiels" desc="Utilise systématiquement ces hashtags pour maximiser la visibilité sur les réseaux." tags={HASHTAGS} />
+          <ToolCard icon={<BarChart3 className="size-5" />} title={cards[0].title} desc={cards[0].desc} cta={{ href: "#petitions", label: cards[0].cta }} />
+          <ToolCard icon={<Calendar className="size-5" />} title={cards[1].title} desc={cards[1].desc} cta={{ href: "#server-slam", label: cards[1].cta, variant: "flame" }} />
+          <ToolCard icon={<Mic className="size-5" />} title={cards[2].title} desc={cards[2].desc} cta={{ href: "#kit", label: cards[2].cta }} />
+          <ToolCard icon={<Mail className="size-5" />} title={cards[3].title} desc={cards[3].desc} action={() => { setPlatform("sony"); document.getElementById("tools")?.scrollIntoView({ behavior: "smooth" }); }} actionLabel={cards[3].cta} />
+          <ToolCard icon={<Link2 className="size-5" />} title={cards[4].title} desc={cards[4].desc} action={copyUrl} actionLabel={cards[4].cta} />
+          <ToolCard icon={<Megaphone className="size-5" />} title={cards[5].title} desc={cards[5].desc} tags={HASHTAGS} />
         </div>
       </div>
     </section>

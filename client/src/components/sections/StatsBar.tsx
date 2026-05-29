@@ -1,11 +1,13 @@
 /* D3MAND — Stats Bar (mission control strip) */
 import AnimatedCounter from "../AnimatedCounter";
 import { useReveal } from "@/hooks/useReveal";
+import { useLang } from "@/contexts/LanguageContext";
 
 type Props = { mainSigs: number };
 
 export default function StatsBar({ mainSigs }: Props) {
   const ref = useReveal();
+  const { T } = useLang();
 
   return (
     <div
@@ -21,13 +23,13 @@ export default function StatsBar({ mainSigs }: Props) {
               format={(n) => `+${Math.floor(n / 1000)}K`}
             />
           }
-          label="Pétition principale"
+          label={T.stats.mainPetition}
         />
-        <Item value="6" label="Pétitions actives" />
-        <Item value="$3.6B" label="Rachat Sony / Bungie" />
-        <Item value="-$765M" label="Perte Sony / Bungie" color="var(--flame)" />
-        <Item value="12 ans" label="D1 → D2 → 9 juin 2026" />
-        <Item value="9 juin" label="Server Slam" />
+        <Item value="6" label={T.stats.activePetitions} />
+        <Item value="$3.6B" label={T.stats.buyout} />
+        <Item value="-$765M" label={T.stats.losses} color="var(--flame)" />
+        <Item value="12 ans" label={T.stats.timeline} />
+        <Item value="9 juin" label={T.stats.serverSlam} />
       </div>
     </div>
   );

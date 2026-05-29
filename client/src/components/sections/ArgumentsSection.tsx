@@ -1,55 +1,26 @@
 /* D3MAND — Arguments grid (numbered codex cards) */
 import { useReveal } from "@/hooks/useReveal";
-
-const ARGS = [
-  {
-    n: "01",
-    title: "Communauté mondiale prouvée",
-    text: "266 000+ signatures en quelques jours. Des millions de joueurs actifs pendant 12 ans. Destiny est une audience captive, loyale et prête à revenir — une rareté dans l'industrie.",
-  },
-  {
-    n: "02",
-    title: "Dette technologique à solder",
-    text: "Le « vaulting » de contenus payants prouve les limites structurelles du moteur de Destiny 2. Un nouveau moteur permettrait de préserver l'intégralité de la saga sans compression du catalogue.",
-  },
-  {
-    n: "03",
-    title: "Lien social irremplaçable",
-    text: "Des millions d'amitiés réelles, construites autour de raids nocturnes et de rituels hebdomadaires. Destiny 3 ne serait pas un jeu — ce serait la préservation d'un tissu social numérique unique.",
-  },
-  {
-    n: "04",
-    title: "Franchise plus bankable que Marathon",
-    text: "Marathon est un pari risqué sur un marché encombré. Destiny bénéficie d'un univers profond, d'un lore établi sur 12 ans et d'un public qui ne demande qu'à investir dans une suite.",
-  },
-  {
-    n: "05",
-    title: "$765M de pertes sèches à compenser",
-    text: "Sur la dernière année fiscale, Sony a subi une dépréciation d'actifs de 765 millions de dollars directement liée à Bungie. C'est un fait comptable, vérifiable, indiscutable. Destiny 3 est la voie la plus directe vers un ROI crédible sur l'acquisition de $3.6B.",
-    highlight: true,
-  },
-  {
-    n: "06",
-    title: "L'argument du Server Slam",
-    text: "Le 9 juin 2026, un pic massif de DAU (Daily Active Users) sera un argument quantitatif indiscutable auprès du board de Sony. Les métriques d'engagement parlent plus fort que les signatures.",
-  },
-];
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function ArgumentsSection() {
   const ref = useReveal();
+  const { T } = useLang();
+
   return (
     <section id="arguments" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10 lg:px-16">
         <div ref={ref} className="mb-12">
-          <div className="codex-tag mb-2 text-[0.6rem]">Pourquoi Destiny 3</div>
+          <div className="codex-tag mb-2 text-[0.6rem]">{T.arguments.tag}</div>
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight">
-            Les <em className="not-italic text-[var(--gold)]">arguments</em> que Sony doit entendre
+            {T.arguments.title}{" "}
+            <em className="not-italic text-[var(--gold)]">{T.arguments.titleGold}</em>{" "}
+            {T.arguments.titleEnd}
           </h2>
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {ARGS.map((a) => (
-            <ArgCard key={a.n} {...a} />
+          {T.arguments.args.map((a) => (
+            <ArgCard key={a.n} n={a.n} title={a.title} text={a.text} highlight={a.highlight} />
           ))}
         </div>
       </div>

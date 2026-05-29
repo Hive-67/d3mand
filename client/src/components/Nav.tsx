@@ -78,7 +78,7 @@ export default function Nav() {
       <button
         onClick={async () => {
           await navigator.clipboard.writeText("https://d3mandhub.com/");
-          toast.success("Lien copié !");
+          toast.success(T.nav.linkCopied);
         }}
         className="block group text-left"
       >

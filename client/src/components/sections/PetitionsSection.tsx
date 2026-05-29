@@ -2,6 +2,7 @@
 import { ArrowUpRight } from "lucide-react";
 import AnimatedCounter from "../AnimatedCounter";
 import { useReveal } from "@/hooks/useReveal";
+import { useLang } from "@/contexts/LanguageContext";
 import {
   PETITIONS,
   type PetitionEntry,
@@ -14,20 +15,22 @@ type Props = {
 
 export default function PetitionsSection({ sigs }: Props) {
   const headerRef = useReveal();
+  const { T } = useLang();
 
   return (
     <section id="petitions" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10 lg:px-16">
         <div ref={headerRef} className="mb-12">
           <div className="codex-tag mb-2 text-[0.6rem]">
-            Mobilisation globale
+            {T.petitions.tag}
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight">
-            Toutes les <em className="not-italic text-[var(--gold)]">pétitions</em> en un seul endroit
+            {T.petitions.title}{" "}
+            <em className="not-italic text-[var(--gold)]">{T.petitions.titleGold}</em>{" "}
+            {T.petitions.titleEnd}
           </h2>
         </div>
 
-        {/* 4 pétitions actives uniquement */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {PETITIONS.map((p) => (
             <PetitionCard key={p.id} petition={p} sigs={sigs[p.id]} />
@@ -46,6 +49,7 @@ function PetitionCard({
   sigs: number;
 }) {
   const ref = useReveal();
+  const { T } = useLang();
   const pct = Math.min((sigs / petition.goal) * 100, 100);
 
   return (
@@ -69,12 +73,12 @@ function PetitionCard({
       <div className="flex items-center gap-3 mb-3">
         <div className="size-1.5 rounded-full bg-[var(--gold)] animate-pulse-dot" />
         <span className="font-mono text-[0.55rem] uppercase tracking-[0.25em] text-[var(--gold)]">
-          {petition.featured ? "Pétition principale" : "Active"}
+          {petition.featured ? T.petitions.featured : T.petitions.active}
         </span>
         {petition.featured && (
           <span className="inline-flex items-center gap-1.5 border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono text-[0.55rem] uppercase tracking-[0.2em] text-emerald-400">
             <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse-dot" />
-            Live
+            {T.petitions.live}
           </span>
         )}
       </div>
@@ -91,7 +95,7 @@ function PetitionCard({
           <AnimatedCounter target={sigs} />
         </div>
         <div className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-[var(--muted-foreground)]">
-          signatures
+          {T.petitions.signatures}
         </div>
       </div>
 
@@ -102,7 +106,7 @@ function PetitionCard({
         />
       </div>
       <div className="mt-1 flex justify-between font-mono text-[0.55rem] uppercase tracking-[0.2em] text-[var(--muted-foreground)]">
-        <span>{pct.toFixed(1)}% objectif</span>
+        <span>{pct.toFixed(1)}{T.petitions.goalPct}</span>
         <span>{petition.goal.toLocaleString("fr-FR")}</span>
       </div>
 
@@ -113,7 +117,7 @@ function PetitionCard({
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 border border-[var(--gold-dim)] px-3 py-2 font-display text-[0.6rem] font-bold uppercase tracking-[0.2em] text-[var(--gold)] transition-all hover:border-[var(--gold)] hover:bg-[var(--gold)]/5"
         >
-          Signer
+          {T.petitions.sign}
           <ArrowUpRight className="size-3" />
         </a>
         {petition.altLinks?.map((alt) => (
