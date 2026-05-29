@@ -1,8 +1,11 @@
 /* D3MAND — Footer */
 import { useLang } from "@/contexts/LanguageContext";
+import { useVisitorCount } from "@/hooks/useVisitorCount";
 
 export default function Footer() {
   const { T } = useLang();
+  const visitors = useVisitorCount();
+
   return (
     <footer className="border-t border-[var(--gold)]/15 bg-[var(--dark)] py-14">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10 lg:px-16 text-center">
@@ -15,7 +18,18 @@ export default function Footer() {
         <p className="mx-auto mt-4 max-w-2xl text-xs text-[var(--muted-foreground)]/70">
           {T.footer.sources}
         </p>
-        <div className="mt-8 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-[var(--muted-foreground)]/50">
+
+        {/* Visitor counter */}
+        {visitors !== null && (
+          <div className="mt-6 inline-flex items-center gap-2 border border-[var(--gold)]/15 px-4 py-2">
+            <span className="size-1.5 rounded-full bg-emerald-500" />
+            <span className="font-mono text-[0.6rem] uppercase tracking-[0.25em] text-[var(--muted-foreground)]/70">
+              {visitors.toLocaleString()} {T.footer.visitors}
+            </span>
+          </div>
+        )}
+
+        <div className="mt-6 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-[var(--muted-foreground)]/50">
           {T.footer.credit}
         </div>
       </div>

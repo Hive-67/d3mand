@@ -110,9 +110,11 @@ const t = {
     },
     videos: {
       tag: "La communauté réagit",
-      title1: "Ils ont",
-      title2: "tout quitté pour en parler",
-      subtitle: "Des gardiens qui filment leur réaction, leurs souvenirs, leur deuil. La preuve que Destiny n'est pas un jeu comme les autres.",
+      title: "La communauté",
+      titleGold: "prend la parole",
+      tabFarewell: "Vidéos d'adieu",
+      tabInfo: "Vidéos d'info",
+      empty: "Vidéos à venir…",
     },
     kit: {
       tag: "Créateurs de contenu & Presse",
@@ -128,6 +130,7 @@ const t = {
       disclaimer: "Initiative communautaire indépendante. Ce site n'est pas affilié à Bungie, Sony Interactive Entertainment ou Change.org. Toutes les données de pétitions proviennent de sources publiques vérifiées.",
       sources: "Sources : IGN SEA · TweakTown · DualShockers · Bungie.net · Reddit r/destiny2 · Change.org",
       credit: "Fait par la communauté, pour la communauté · #D3MAND · #MakeDestiny3 · 2026",
+      visitors: "visites",
     },
   },
 
@@ -239,10 +242,12 @@ const t = {
       resources: "Direct resources",
     },
     videos: {
-      tag: "The community reacts",
-      title1: "They stopped everything",
-      title2: "to talk about it",
-      subtitle: "Guardians filming their reactions, their memories, their grief. Proof that Destiny is not just another game.",
+      tag: "The community speaks",
+      title: "The community",
+      titleGold: "speaks out",
+      tabFarewell: "Farewell videos",
+      tabInfo: "Info videos",
+      empty: "Videos coming soon…",
     },
     kit: {
       tag: "Content creators & Press",
@@ -258,6 +263,7 @@ const t = {
       disclaimer: "Independent community initiative. This site is not affiliated with Bungie, Sony Interactive Entertainment or Change.org. All petition data comes from verified public sources.",
       sources: "Sources: IGN SEA · TweakTown · DualShockers · Bungie.net · Reddit r/destiny2 · Change.org",
       credit: "Made by the community, for the community · #D3MAND · #MakeDestiny3 · 2026",
+      visitors: "visits",
     },
   },
 } as const;
