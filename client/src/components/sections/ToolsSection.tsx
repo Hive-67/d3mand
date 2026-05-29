@@ -149,6 +149,26 @@ export default function ToolsSection() {
           <ToolCard icon={<Megaphone className="size-5" />} title={cards[5].title} desc={cards[5].desc} tags={HASHTAGS} />
         </div>
 
+        {/* Official contacts */}
+        <div className="mt-10 border border-[var(--gold)]/15 bg-[var(--gold)]/[0.03] p-6">
+          <div className="codex-tag mb-4 text-[0.6rem]">{T.tools.contactTag}</div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {T.tools.contactItems.map((c) => (
+              <div key={c.label} className="flex flex-col gap-1">
+                <span className="font-mono text-[0.55rem] uppercase tracking-[0.2em] text-[var(--muted-foreground)]">{c.label}</span>
+                <a
+                  href={c.value.startsWith("http") ? `https://${c.value}` : `mailto:${c.value}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-sm text-[var(--gold)] hover:text-[var(--gold-light)] transition-colors break-all"
+                >
+                  {c.value}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Embed code */}
         <div ref={embedRef} className="mt-14">
           <div className="mb-3 font-display text-base font-bold text-[var(--gold)]">{T.kit.embedTitle}</div>

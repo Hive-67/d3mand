@@ -102,8 +102,8 @@ export default function Home() {
         <Hero totalSignatures={total} />
         <AboutSection />
         <StatsBar mainSigs={sigs.main} />
-        <ServerSlamSection />
         <PetitionsSection sigs={sigs} />
+        <ServerSlamSection />
         <ArgumentsSection />
         <ToolsSection />
         <VideosSection />

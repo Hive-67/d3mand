@@ -14,7 +14,6 @@ export default function Nav() {
   const NAV_LINKS = [
     { href: "#about", label: T.nav.manifeste },
     { href: "#petitions", label: T.nav.petitions },
-    { href: "#server-slam", label: T.nav.serverSlam },
     { href: "#tools", label: T.nav.tools },
     { href: "#arguments", label: T.nav.arguments },
     { href: "#videos", label: T.nav.videos },

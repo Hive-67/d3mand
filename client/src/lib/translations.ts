@@ -184,6 +184,12 @@ const t = {
       resources: "Ressources directes",
       toastCopied: "Message copié",
       toastUrlCopied: "URL copiée",
+      contactTag: "Contacts officiels",
+      contactItems: [
+        { label: "Sony Interactive Entertainment PR", value: "press@sie.sony.com" },
+        { label: "Sony Investisseurs", value: "ir.sony.com" },
+        { label: "Bungie Community Team", value: "community@bungie.com" },
+      ],
       cards: [
         { title: "Tracker de signatures", desc: "Toutes les pétitions recensées avec leur progression en temps quasi-réel. Bookmark cette page pour suivre l'évolution quotidienne.", cta: "Voir les pétitions" },
         { title: "Événement Server Slam", desc: "Le 9 juin 2026, connectez-vous à Destiny 2 avec tous vos gardiens. Chaque connexion compte dans les métriques Sony.", cta: "Voir le compte à rebours" },
@@ -414,6 +420,12 @@ const t = {
       resources: "Direct resources",
       toastCopied: "Message copied",
       toastUrlCopied: "URL copied",
+      contactTag: "Official contacts",
+      contactItems: [
+        { label: "Sony Interactive Entertainment PR", value: "press@sie.sony.com" },
+        { label: "Sony Investors", value: "ir.sony.com" },
+        { label: "Bungie Community Team", value: "community@bungie.com" },
+      ],
       cards: [
         { title: "Signature tracker", desc: "All petitions tracked with near-real-time progress. Bookmark this page to follow daily updates.", cta: "View petitions" },
         { title: "Server Slam event", desc: "On June 9, 2026, log in to Destiny 2 with all your guardians. Every login counts in Sony's metrics.", cta: "View countdown" },
