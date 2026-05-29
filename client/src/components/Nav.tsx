@@ -29,19 +29,26 @@ export default function Nav() {
 
   useEffect(() => {
     const ids = NAV_LINKS.map((l) => l.href.slice(1));
-    const visible = new Set<string>();
+    // Extra sections not in nav but mapped to a nav link
+    const ALIAS: Record<string, string> = { "server-slam": "petitions" };
+    const counts = new Map<string, number>();
 
+    const adjust = (navId: string, delta: number) => {
+      counts.set(navId, Math.max(0, (counts.get(navId) ?? 0) + delta));
+    };
     const pick = () => {
-      const first = ids.find((id) => visible.has(id));
+      const first = ids.find((id) => (counts.get(id) ?? 0) > 0);
       setActiveHref(first ? `#${first}` : null);
     };
 
-    const observers = ids.map((id) => {
+    const allToObserve = [...ids, ...Object.keys(ALIAS)];
+    const observers = allToObserve.map((id) => {
       const el = document.getElementById(id);
       if (!el) return null;
+      const navId = ALIAS[id] ?? id;
       const obs = new IntersectionObserver(
         ([entry]) => {
-          entry.isIntersecting ? visible.add(id) : visible.delete(id);
+          adjust(navId, entry.isIntersecting ? 1 : -1);
           pick();
         },
         { rootMargin: "-15% 0px -55% 0px" }
