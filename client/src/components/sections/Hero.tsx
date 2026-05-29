@@ -124,9 +124,9 @@ export default function Hero({ totalSignatures }: HeroProps) {
           </a>
         </div>
 
-        {/* Metrics row — directly mirrors reference image */}
+        {/* Metrics row */}
         <div
-          className="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-12 animate-fade-up"
+          className="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5 sm:gap-10 animate-fade-up"
           style={{ animationDelay: "0.7s" }}
         >
           <div className="border-l border-[var(--gold)]/20 pl-4">
@@ -148,6 +148,7 @@ export default function Hero({ totalSignatures }: HeroProps) {
           <Metric value="6" label="Pétitions actives" />
           <Metric value="9 juin" label="Server Slam" />
           <Metric value="$3.6B" label="Rachat Bungie" />
+          <Metric value="−$705M" label="Pertes Sony/Bungie" accent="flame" />
         </div>
 
         {/* Hashtags column — bottom right */}
@@ -167,10 +168,14 @@ export default function Hero({ totalSignatures }: HeroProps) {
   );
 }
 
-function Metric({ value, label }: { value: React.ReactNode; label: string }) {
+function Metric({ value, label, accent = "gold" }: { value: React.ReactNode; label: string; accent?: "gold" | "flame" }) {
+  const color = accent === "flame" ? "var(--flame)" : "var(--gold)";
   return (
     <div className="border-l border-[var(--gold)]/20 pl-4">
-      <div className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[var(--gold)] leading-none tabular-nums">
+      <div
+        className="font-display text-3xl sm:text-4xl lg:text-5xl font-black leading-none tabular-nums"
+        style={{ color }}
+      >
         {value}
       </div>
       <div className="mt-2 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-[var(--muted-foreground)]">

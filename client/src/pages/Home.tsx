@@ -9,6 +9,7 @@ import Nav from "@/components/Nav";
 import Starfield from "@/components/Starfield";
 import SetupModal from "@/components/SetupModal";
 import SyncBar from "@/components/SyncBar";
+import AboutSection from "@/components/sections/AboutSection";
 import ArgumentsSection from "@/components/sections/ArgumentsSection";
 import Hero from "@/components/sections/Hero";
 import KitSection from "@/components/sections/KitSection";
@@ -91,6 +92,7 @@ export default function Home() {
       <div className="relative z-10">
         <Nav />
         <Hero totalSignatures={total} />
+        <AboutSection />
         <StatsBar mainSigs={sigs.main} />
         <ServerSlamSection />
         <PetitionsSection sigs={sigs} />
