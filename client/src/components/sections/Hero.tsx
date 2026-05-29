@@ -149,6 +149,19 @@ export default function Hero({ totalSignatures }: HeroProps) {
           <Metric value="−$765M" label={T.hero.losses} accent="flame" />
         </div>
 
+        {/* Destiny logo — right side */}
+        <div
+          className="hidden lg:block pointer-events-none absolute right-10 xl:right-20 top-1/2 -translate-y-[55%] animate-fade-up"
+          style={{ animationDelay: "0.5s" }}
+        >
+          <img
+            src="/destiny-logo.png"
+            alt="Destiny"
+            className="w-[340px] xl:w-[420px] select-none opacity-80"
+            style={{ filter: "drop-shadow(0 0 60px rgba(220,100,30,0.35))" }}
+          />
+        </div>
+
         {/* Hashtags column — bottom right */}
         <div
           className="mt-14 sm:absolute sm:right-10 sm:bottom-12 lg:right-16 sm:mt-0 flex flex-col items-end gap-1 font-mono text-[0.7rem] tracking-[0.15em] text-[var(--gold-dim)]/70 animate-fade-up"
