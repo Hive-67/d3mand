@@ -46,7 +46,7 @@ export default function Hero({ totalSignatures }: HeroProps) {
             animationDelay: "0.15s",
           }}
         >
-          D3MAND
+          Destiny 3
         </h1>
 
         {/* Subtitle */}
@@ -151,17 +151,14 @@ export default function Hero({ totalSignatures }: HeroProps) {
 
         {/* Destiny logo — right side */}
         <div
-          className="hidden lg:block pointer-events-none absolute right-0 xl:right-8 top-1/2 -translate-y-1/2 animate-fade-up"
+          className="hidden lg:block pointer-events-none absolute right-4 xl:right-12 top-1/2 -translate-y-[52%] animate-fade-up"
           style={{ animationDelay: "0.5s" }}
         >
           <img
             src="/destiny-logo.png"
             alt="Destiny"
-            className="w-[480px] xl:w-[560px] select-none"
-            style={{
-              mixBlendMode: "screen",
-              filter: "drop-shadow(0 0 80px rgba(220,90,20,0.5)) brightness(1.1)",
-            }}
+            className="w-[440px] xl:w-[520px] select-none"
+            style={{ filter: "drop-shadow(0 0 40px rgba(220,80,20,0.4))" }}
           />
         </div>
 
