@@ -16,11 +16,12 @@ function useTwoYearCountdown() {
     const d = Math.floor(remaining / 86400000);
     const h = Math.floor((remaining % 86400000) / 3600000);
     const m = Math.floor((remaining % 3600000) / 60000);
-    return { d, h, m, pct };
+    const s = Math.floor((remaining % 60000) / 1000);
+    return { d, h, m, s, pct };
   };
   const [t, setT] = useState(calc);
   useEffect(() => {
-    const id = window.setInterval(() => setT(calc()), 60000);
+    const id = window.setInterval(() => setT(calc()), 1000);
     return () => clearInterval(id);
   }, []);
   return t;
@@ -29,7 +30,7 @@ function useTwoYearCountdown() {
 export default function AboutSection() {
   const ref = useReveal();
   const { T } = useLang();
-  const { d, h, m, pct } = useTwoYearCountdown();
+  const { d, h, m, s, pct } = useTwoYearCountdown();
   const [contactName, setContactName] = useState("");
   const [contactMsg, setContactMsg] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
@@ -61,12 +62,14 @@ export default function AboutSection() {
               <div className="font-mono text-[0.55rem] uppercase tracking-[0.35em] text-[var(--gold-dim)] mb-3">
                 {T.about.countdown}
               </div>
-              <div className="flex items-end gap-4 mb-4">
-                <Unit value={d} label={T.about.days} />
+              <div className="flex items-end gap-3 mb-4 flex-wrap">
+                <Unit value={d} label={T.about.days} digits={3} />
                 <span className="font-display text-2xl font-black text-[var(--gold)]/40 mb-3">:</span>
-                <Unit value={h} label={T.about.hours} />
+                <Unit value={h} label={T.about.hours} digits={2} />
                 <span className="font-display text-2xl font-black text-[var(--gold)]/40 mb-3">:</span>
-                <Unit value={m} label={T.about.min} />
+                <Unit value={m} label={T.about.min} digits={2} />
+                <span className="font-display text-2xl font-black text-[var(--gold)]/40 mb-3">:</span>
+                <Unit value={s} label={T.about.sec} digits={2} />
               </div>
               <div className="h-px w-full bg-[var(--gold)]/10 relative overflow-hidden">
                 <div
@@ -186,11 +189,11 @@ export default function AboutSection() {
   );
 }
 
-function Unit({ value, label }: { value: number; label: string }) {
+function Unit({ value, label, digits = 2 }: { value: number; label: string; digits?: number }) {
   return (
     <div className="flex flex-col items-center">
       <span className="font-display text-2xl font-black text-[var(--gold)] leading-none tabular-nums">
-        {String(value).padStart(3, "0")}
+        {String(value).padStart(digits, "0")}
       </span>
       <span className="mt-1 font-mono text-[0.5rem] uppercase tracking-[0.25em] text-[var(--muted-foreground)]">
         {label}
