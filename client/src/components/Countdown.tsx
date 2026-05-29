@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const TARGET_DATE = new Date("2026-06-09T17:00:00Z");
+const TARGET_DATE = new Date("2026-06-09T16:00:00Z"); // 18h00 Paris (CEST = UTC+2)
 
 function getDiff() {
   const diff = TARGET_DATE.getTime() - Date.now();
