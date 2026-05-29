@@ -12,7 +12,7 @@ const KIT = [
   },
   {
     title: "Angle vidéo #2",
-    desc: "« 122 000 gardiens ont signé en 48h — la plus grande pétition gaming de 2026 »",
+    desc: "« 300 000 gardiens ont signé en quelques jours — la plus grande pétition gaming de 2026 »",
     tag: "News · Breaking · Communauté",
   },
   {
@@ -27,7 +27,7 @@ const KIT = [
   },
   {
     title: "Data clé à citer",
-    desc: "122K+ signatures · 6 pétitions actives · $760M de dépréciation Sony · $3.6B rachat · 12 ans de franchise · 9 juin : Server Slam",
+    desc: "300K+ signatures · 6 pétitions actives · $765M de dépréciation Sony · $3.6B rachat · 12 ans de franchise · 9 juin : Server Slam",
     tag: "Sources vérifiées · IGN, TweakTown, Reddit",
   },
   {
@@ -47,7 +47,7 @@ const KIT = [
   },
 ];
 
-const EMBED_CODE = `<a href="https://c.org/GxQHNMQCH6" target="_blank" style="display:inline-block;background:#C9A84C;color:#080A0E;font-family:monospace;font-weight:700;padding:12px 24px;text-decoration:none;letter-spacing:2px;font-size:12px;">✦ SIGNER — DESTINY 3 PETITION</a>`;
+const EMBED_CODE = `<a href="https://d3mandhub.com/" target="_blank" style="display:inline-block;background:#C9A84C;color:#080A0E;font-family:monospace;font-weight:700;padding:12px 24px;text-decoration:none;letter-spacing:2px;font-size:12px;">✦ DESTINY 3 — D3MAND</a>`;
 
 export default function KitSection() {
   const headerRef = useReveal();
