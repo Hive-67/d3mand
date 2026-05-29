@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useReveal } from "@/hooks/useReveal";
+import { useLang } from "@/contexts/LanguageContext";
 
 // Date de lancement du mouvement — modifier ici si besoin
 const LAUNCH_DATE = new Date("2026-05-29T00:00:00Z");
@@ -27,6 +28,7 @@ function useTwoYearCountdown() {
 
 export default function AboutSection() {
   const ref = useReveal();
+  const { T } = useLang();
   const { d, h, m, pct } = useTwoYearCountdown();
 
   return (
@@ -41,31 +43,27 @@ export default function AboutSection() {
 
             {/* Title + tagline */}
             <div className="flex flex-col gap-3">
-              <div className="codex-tag text-[0.6rem]">Manifeste</div>
+              <div className="codex-tag text-[0.6rem]">{T.about.tag}</div>
               <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
-                Pourquoi{" "}
-                <span className="text-gradient-gold">D3MAND</span>{" "}
-                existe
+                {T.about.title}
               </h2>
               <div className="h-px w-16 bg-gradient-to-r from-[var(--gold)] to-transparent" />
               <p className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-[var(--muted-foreground)] leading-relaxed">
-                Un hub, pas une pétition de plus.
-                <br />Une communauté, pas un hashtag.
-                <br />Deux ans pour être entendus.
+                {T.about.tagline1}<br />{T.about.tagline2}<br />{T.about.tagline3}
               </p>
             </div>
 
             {/* 2-year countdown — where the guardian looks */}
             <div className="mt-8 w-full max-w-[300px] border border-[var(--gold)]/20 bg-[var(--gold)]/3 p-4">
               <div className="font-mono text-[0.55rem] uppercase tracking-[0.35em] text-[var(--gold-dim)] mb-3">
-                // Temps restant
+                {T.about.countdown}
               </div>
               <div className="flex items-end gap-4 mb-4">
-                <Unit value={d} label="Jours" />
+                <Unit value={d} label={T.about.days} />
                 <span className="font-display text-2xl font-black text-[var(--gold)]/40 mb-3">:</span>
-                <Unit value={h} label="Heures" />
+                <Unit value={h} label={T.about.hours} />
                 <span className="font-display text-2xl font-black text-[var(--gold)]/40 mb-3">:</span>
-                <Unit value={m} label="Min" />
+                <Unit value={m} label={T.about.min} />
               </div>
               <div className="h-px w-full bg-[var(--gold)]/10 relative overflow-hidden">
                 <div
@@ -75,7 +73,7 @@ export default function AboutSection() {
               </div>
               <div className="mt-2 flex justify-between font-mono text-[0.5rem] text-[var(--muted-foreground)]">
                 <span>29 mai 2026</span>
-                <span>{pct.toFixed(1)}% écoulé</span>
+                <span>{pct.toFixed(1)}% {T.about.elapsed}</span>
                 <span>29 mai 2028</span>
               </div>
             </div>
@@ -93,42 +91,16 @@ export default function AboutSection() {
 
           {/* Right — body text */}
           <div className="space-y-6 text-base sm:text-lg leading-relaxed text-[var(--foreground)]/80 font-light lg:pt-16">
-            <p>
-              Sony a racheté Bungie{" "}
-              <span className="font-semibold text-[var(--foreground)]">3,6 milliards de dollars</span>.
-              Aujourd'hui :{" "}
-              <span className="font-semibold text-[var(--flame)]">765 millions de dollars de pertes</span>.{" "}
-              <span className="font-semibold text-[var(--foreground)]">400 développeurs licenciés</span>.
-              Destiny 2 se ferme le{" "}
-              <span className="font-semibold text-[var(--flame)]">9 juin 2026</span>.
-            </p>
-
-            <p>
-              Aucun concurrent n'a jamais réussi à remplacer Destiny.{" "}
-              <span className="font-semibold text-[var(--foreground)]">Douze ans. Zéro équivalent.</span>
-            </p>
-
-            <p>
-              <span className="font-semibold text-[var(--gold)]">220 000 signatures en 4 jours.</span>{" "}
-              Spontanées. Pas organisées. Pas payées.
-            </p>
-
-            <p>
-              Ce n'est pas une pétition de plus. C'est{" "}
-              <span className="font-semibold text-[var(--foreground)]">un hub</span> : toutes les pétitions,
-              tous les outils, un seul endroit. Zéro pub. Zéro monétisation. Juste organiser cette demande
-              pour la rendre incontournable.
-            </p>
-
+            <p>{T.about.p1}</p>
+            <p>{T.about.p2}</p>
+            <p><span className="font-semibold text-[var(--gold)]">{T.about.p3}</span></p>
+            <p>{T.about.p4}</p>
             <p className="font-semibold text-[var(--foreground)]">
-              Sony cherche comment inverser la tendance.{" "}
-              <span className="text-[var(--gold)]">Montrez-leur où est la réponse.</span>
+              {T.about.p5}{" "}
+              <span className="text-[var(--gold)]">{T.about.p5gold}</span>
             </p>
-
             <p className="font-mono text-sm text-[var(--muted-foreground)] tracking-wide pt-2 border-l-2 border-[var(--gold)]/30 pl-4">
-              Le site sera actif et mis à jour régulièrement pendant{" "}
-              <span className="text-[var(--gold)]">deux ans</span>.
-              Sans annonce officielle d'un Destiny 3, le site fermera.
+              {T.about.p6}
             </p>
           </div>
         </div>

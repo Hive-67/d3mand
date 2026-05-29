@@ -1,5 +1,8 @@
 /* D3MAND — Footer */
+import { useLang } from "@/contexts/LanguageContext";
+
 export default function Footer() {
+  const { T } = useLang();
   return (
     <footer className="border-t border-[var(--gold)]/15 bg-[var(--dark)] py-14">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10 lg:px-16 text-center">
@@ -7,15 +10,13 @@ export default function Footer() {
           D3MAND
         </div>
         <p className="mx-auto max-w-2xl text-sm leading-relaxed text-[var(--muted-foreground)]">
-          Initiative communautaire indépendante. Ce site n'est pas affilié à
-          Bungie, Sony Interactive Entertainment ou Change.org. Toutes les
-          données de pétitions proviennent de sources publiques vérifiées.
+          {T.footer.disclaimer}
         </p>
         <p className="mx-auto mt-4 max-w-2xl text-xs text-[var(--muted-foreground)]/70">
-          Sources : IGN SEA · TweakTown · DualShockers · Bungie.net · Reddit r/destiny2 · Change.org
+          {T.footer.sources}
         </p>
         <div className="mt-8 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-[var(--muted-foreground)]/50">
-          Fait par la communauté, pour la communauté · #D3MAND · #MakeDestiny3 · 2026
+          {T.footer.credit}
         </div>
       </div>
     </footer>

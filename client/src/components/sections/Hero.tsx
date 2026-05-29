@@ -9,19 +9,20 @@
  */
 import { ArrowUpRight } from "lucide-react";
 import AnimatedCounter from "../AnimatedCounter";
+import { useLang } from "@/contexts/LanguageContext";
 
 type HeroProps = {
   totalSignatures: number;
 };
 
-function getSublabel(total: number): string {
-  if (total >= 500000) return "\uD83D\uDD25 Un demi-million de Gardiens mobilis\u00e9s \u00b7 mis \u00e0 jour automatiquement";
-  if (total >= 200000) return "\uD83D\uDD25 Plus de 200\u202F000 Gardiens mobilis\u00e9s \u00b7 mis \u00e0 jour automatiquement";
-  if (total >= 150000) return "Objectif 200\u202F000 en vue \u00b7 mis \u00e0 jour automatiquement";
-  return "en progression \u00b7 mis \u00e0 jour automatiquement";
-}
-
 export default function Hero({ totalSignatures }: HeroProps) {
+  const { T } = useLang();
+  const getSublabel = (total: number) => {
+    if (total >= 500000) return T.hero.sublabel500k;
+    if (total >= 200000) return T.hero.sublabel200k;
+    if (total >= 150000) return T.hero.sublabel150k;
+    return T.hero.sublabelDefault;
+  };
   return (
     <header className="relative isolate overflow-hidden">
       {/* Outer frame — subtle codex border */}
@@ -34,8 +35,7 @@ export default function Hero({ totalSignatures }: HeroProps) {
           className="font-mono text-[0.7rem] uppercase tracking-[0.4em] text-[var(--gold-dim)] animate-fade-up"
           style={{ animationDelay: "0.05s" }}
         >
-          <span className="text-[var(--gold)]">//</span> INITIATIVE MONDIALE
-          <span className="mx-3 text-[var(--gold)]">·</span> COMMUNITY HUB
+          {T.hero.eyebrow}
         </div>
 
         {/* Wordmark */}
@@ -68,12 +68,13 @@ export default function Hero({ totalSignatures }: HeroProps) {
           className="mt-8 max-w-xl space-y-2 text-lg sm:text-xl leading-relaxed font-light text-[var(--foreground)] animate-fade-up"
           style={{ animationDelay: "0.4s" }}
         >
-          <p>Toutes les pétitions réunies.</p>
+          <p>{T.hero.p1}</p>
           <p>
-            <span className="font-semibold text-[var(--gold)]">+122 000 Gardiens</span>{" "}
-            exigent la suite.
+            <span className="font-semibold text-[var(--gold)]">
+              {T.hero.p2Prefix}{Math.floor(totalSignatures / 1000)}K{T.hero.p2Suffix}
+            </span>
           </p>
-          <p>Sony doit entendre.</p>
+          <p>{T.hero.p3}</p>
         </div>
 
         {/* CTAs */}
@@ -87,7 +88,7 @@ export default function Hero({ totalSignatures }: HeroProps) {
             rel="noopener noreferrer"
             className="clip-bevel group inline-flex items-center gap-2 bg-[var(--gold)] px-6 py-3 font-display text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--black)] transition-all hover:bg-[var(--gold-light)] hover:-translate-y-0.5 hover:glow-gold active:scale-[0.98]"
           >
-            ✦ Signer la pétition principale
+            {T.hero.cta1}
             <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
           <a
@@ -98,13 +99,13 @@ export default function Hero({ totalSignatures }: HeroProps) {
               <span className="absolute inset-0 animate-ping rounded-full bg-white/60" />
               <span className="relative size-1.5 rounded-full bg-white" />
             </span>
-            Server Slam · 9 juin
+            {T.hero.cta2}
           </a>
           <a
             href="#tools"
             className="clip-bevel inline-flex items-center gap-2 border border-[var(--gold-dim)] bg-transparent px-6 py-3 font-display text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--gold)] transition-all hover:border-[var(--gold)] hover:bg-[var(--gold)]/5 hover:-translate-y-0.5"
           >
-            Outils & ressources
+            {T.hero.cta3}
           </a>
         </div>
 
@@ -123,16 +124,16 @@ export default function Hero({ totalSignatures }: HeroProps) {
               />
             </div>
             <div className="mt-2 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-[var(--muted-foreground)]">
-              Signatures
+              {T.hero.signatures}
             </div>
             <div className="mt-1 font-mono text-[0.55rem] tracking-[0.1em] text-[var(--gold-dim)] max-w-[180px] leading-relaxed">
               {getSublabel(totalSignatures)}
             </div>
           </div>
-          <Metric value="6" label="Pétitions actives" />
-          <Metric value="9 juin" label="Server Slam" />
-          <Metric value="$3.6B" label="Rachat Bungie" />
-          <Metric value="−$765M" label="Pertes Sony/Bungie" accent="flame" />
+          <Metric value="6" label={T.hero.activePetitions} />
+          <Metric value="9 juin" label={T.hero.serverSlam} />
+          <Metric value="$3.6B" label={T.hero.buyout} />
+          <Metric value="−$765M" label={T.hero.losses} accent="flame" />
         </div>
 
         {/* Hashtags column — bottom right */}
