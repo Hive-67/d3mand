@@ -36,21 +36,11 @@ export default function AboutSection() {
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10 lg:px-16">
         <div ref={ref} className="grid grid-cols-1 gap-0 lg:grid-cols-[1fr_2fr]">
 
-          {/* Left — Guardian + title + countdown */}
-          <div className="relative flex flex-col items-start">
-            {/* Guardian image — positioned to bleed out of the column */}
-            <div className="relative w-full max-w-[320px] lg:max-w-none">
-              <img
-                src="/guardian.png"
-                alt="Gardien D3MAND"
-                className="w-full max-w-[280px] lg:max-w-[340px] object-contain select-none pointer-events-none
-                           drop-shadow-[0_0_40px_rgba(201,168,76,0.15)]"
-                style={{ filter: "drop-shadow(0 0 32px rgba(201,168,76,0.12))" }}
-              />
-            </div>
+          {/* Left — title + countdown (top) + guardian (bottom, looking up) */}
+          <div className="flex flex-col items-start">
 
-            {/* Title + tagline overlaid below guardian */}
-            <div className="mt-6 flex flex-col gap-3 lg:mt-4">
+            {/* Title + tagline */}
+            <div className="flex flex-col gap-3">
               <div className="codex-tag text-[0.6rem]">Manifeste</div>
               <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
                 Pourquoi{" "}
@@ -65,13 +55,11 @@ export default function AboutSection() {
               </p>
             </div>
 
-            {/* 2-year countdown */}
+            {/* 2-year countdown — where the guardian looks */}
             <div className="mt-8 w-full max-w-[300px] border border-[var(--gold)]/20 bg-[var(--gold)]/3 p-4">
               <div className="font-mono text-[0.55rem] uppercase tracking-[0.35em] text-[var(--gold-dim)] mb-3">
                 // Temps restant
               </div>
-
-              {/* Digits */}
               <div className="flex items-end gap-4 mb-4">
                 <Unit value={d} label="Jours" />
                 <span className="font-display text-2xl font-black text-[var(--gold)]/40 mb-3">:</span>
@@ -79,15 +67,10 @@ export default function AboutSection() {
                 <span className="font-display text-2xl font-black text-[var(--gold)]/40 mb-3">:</span>
                 <Unit value={m} label="Min" />
               </div>
-
-              {/* Progress bar */}
               <div className="h-px w-full bg-[var(--gold)]/10 relative overflow-hidden">
                 <div
                   className="absolute inset-y-0 left-0 bg-[var(--gold)] transition-all duration-1000"
-                  style={{
-                    width: `${pct}%`,
-                    boxShadow: "0 0 8px var(--gold)",
-                  }}
+                  style={{ width: `${pct}%`, boxShadow: "0 0 8px var(--gold)" }}
                 />
               </div>
               <div className="mt-2 flex justify-between font-mono text-[0.5rem] text-[var(--muted-foreground)]">
@@ -95,6 +78,16 @@ export default function AboutSection() {
                 <span>{pct.toFixed(1)}% écoulé</span>
                 <span>29 mai 2028</span>
               </div>
+            </div>
+
+            {/* Guardian — bottom, looking up toward the countdown */}
+            <div className="mt-6 w-full flex justify-center lg:justify-start">
+              <img
+                src="/guardian.png"
+                alt="Gardien D3MAND"
+                className="w-[220px] lg:w-[280px] object-contain select-none pointer-events-none"
+                style={{ filter: "drop-shadow(0 0 24px rgba(201,168,76,0.18))" }}
+              />
             </div>
           </div>
 
