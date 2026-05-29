@@ -154,17 +154,7 @@ export default function ToolsSection() {
           <div className="codex-tag mb-4 text-[0.6rem]">{T.tools.contactTag}</div>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             {T.tools.contactItems.map((c) => (
-              <div key={c.label} className="flex flex-col gap-1">
-                <span className="font-mono text-[0.55rem] uppercase tracking-[0.2em] text-[var(--muted-foreground)]">{c.label}</span>
-                <a
-                  href={c.value.startsWith("http") ? `https://${c.value}` : `mailto:${c.value}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-sm text-[var(--gold)] hover:text-[var(--gold-light)] transition-colors break-all"
-                >
-                  {c.value}
-                </a>
-              </div>
+              <ContactItem key={c.label} label={c.label} value={c.value} />
             ))}
           </div>
         </div>
@@ -187,6 +177,31 @@ export default function ToolsSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function ContactItem({ label, value }: { label: string; value: string }) {
+  const [copied, setCopied] = useState(false);
+  const { T } = useLang();
+  const copy = async () => {
+    await navigator.clipboard.writeText(value);
+    setCopied(true);
+    toast.success(T.tools.toastCopied);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  return (
+    <div className="flex flex-col gap-1">
+      <span className="font-mono text-[0.55rem] uppercase tracking-[0.2em] text-[var(--muted-foreground)]">{label}</span>
+      <button
+        onClick={copy}
+        className="group flex items-center gap-2 font-mono text-sm text-[var(--gold)] hover:text-[var(--gold-light)] transition-colors break-all text-left"
+      >
+        <span>{value}</span>
+        <span className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+          {copied ? <Check className="size-3.5 text-emerald-500" /> : <Copy className="size-3.5" />}
+        </span>
+      </button>
+    </div>
   );
 }
 
