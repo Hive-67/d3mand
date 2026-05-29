@@ -25,7 +25,6 @@ export default function StatsBar({ mainSigs }: Props) {
           }
           label={T.stats.mainPetition}
         />
-        <Item value="6" label={T.stats.activePetitions} />
         <Item value="$3.6B" label={T.stats.buyout} />
         <Item value="-$765M" label={T.stats.losses} color="var(--flame)" />
         <Item value="12 ans" label={T.stats.timeline} />

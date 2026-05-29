@@ -1,4 +1,4 @@
-export type PetitionId = "main" | "p2" | "p3" | "p4";
+export type PetitionId = "main" | "p2";
 
 export type PetitionEntry = {
   id: PetitionId;
@@ -33,29 +33,11 @@ export const PETITIONS: PetitionEntry[] = [
     goal: 5000,
     href: "https://www.change.org/p/sony-bungie-make-us-d3",
   },
-  {
-    id: "p3",
-    title: "Urge Sony & Bungie to develop Destiny 3",
-    author: "Fm",
-    date: "22 mai 2026 · Change.org",
-    goal: 1000,
-    href: "https://www.change.org/p/urge-sony-bungie-to-develop-destiny-3",
-  },
-  {
-    id: "p4",
-    title: "Support the Destiny community by prioritizing Destiny 3",
-    author: "Eric Dotson",
-    date: "21 mai 2026 · Change.org",
-    goal: 500,
-    href: "https://www.change.org/p/support-the-destiny-community-by-prioritizing-destiny-3",
-  },
 ];
 
 export const FALLBACK_SIGS: Record<PetitionId, number> = {
   main: 300000,
   p2: 5200,
-  p3: 310,
-  p4: 20,
 };
 
 export type SyncState = "loading" | "ok" | "error" | "fallback";

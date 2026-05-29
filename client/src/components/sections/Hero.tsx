@@ -124,7 +124,7 @@ export default function Hero({ totalSignatures }: HeroProps) {
 
         {/* Metrics row */}
         <div
-          className="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5 sm:gap-10 animate-fade-up"
+          className="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4 sm:gap-10 animate-fade-up"
           style={{ animationDelay: "0.7s" }}
         >
           <div className="border-l border-[var(--gold)]/20 pl-4">
@@ -143,7 +143,6 @@ export default function Hero({ totalSignatures }: HeroProps) {
               {getSublabel(totalSignatures)}
             </div>
           </div>
-          <Metric value="6" label={T.hero.activePetitions} />
           <Metric value="9 juin" label={T.hero.serverSlam} />
           <Metric value="$3.6B" label={T.hero.buyout} />
           <Metric value="−$765M" label={T.hero.losses} accent="flame" />
