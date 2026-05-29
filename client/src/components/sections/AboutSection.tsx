@@ -106,6 +106,56 @@ export default function AboutSection() {
               {T.about.p6}
             </p>
 
+            {/* Scrollable "all content" panel */}
+            <div className="border border-[var(--gold)]/15 bg-black/20 max-h-[420px] overflow-y-auto p-6 space-y-8 [scrollbar-width:thin] [scrollbar-color:var(--gold-dim)_transparent]">
+
+              {/* Comment agir */}
+              <div>
+                <div className="codex-tag mb-4 text-[0.6rem]">{T.about.howToActTag}</div>
+                <ul className="space-y-4">
+                  {T.about.actions.map((a) => (
+                    <li key={a.title}>
+                      <div className="font-display text-sm font-bold text-[var(--gold)] uppercase tracking-[0.08em] mb-1">
+                        ✦ {a.title}
+                      </div>
+                      <p className="text-sm leading-relaxed text-[var(--muted-foreground)]">{a.desc}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Kit créateurs */}
+              <div>
+                <div className="codex-tag mb-3 text-[0.6rem]">{T.about.kitTag}</div>
+                <p className="text-sm text-[var(--foreground)]/80 mb-3">{T.about.kitIntro}</p>
+                <ul className="space-y-1.5 mb-3">
+                  {T.about.kitItems.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-[var(--muted-foreground)]">
+                      <span className="mt-1 size-1 shrink-0 bg-[var(--gold)]" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-sm text-[var(--muted-foreground)] italic">{T.about.kitNote}</p>
+              </div>
+
+              {/* Timeline */}
+              <div>
+                <div className="codex-tag mb-3 text-[0.6rem]">{T.about.timelineTag}</div>
+                <p className="text-sm text-[var(--foreground)]/80 mb-3">{T.about.timelineIntro}</p>
+                <ul className="space-y-1.5 mb-3">
+                  {T.about.timelineItems.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-[var(--muted-foreground)]">
+                      <span className="mt-1 size-1 shrink-0 bg-[var(--gold)]" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-sm text-[var(--muted-foreground)] italic">{T.about.timelineNote}</p>
+              </div>
+
+            </div>
+
             {/* Contact form */}
             <div className="pt-4 border-t border-white/5">
               <div className="codex-tag mb-4 text-[0.6rem]">{T.about.contactTag}</div>
