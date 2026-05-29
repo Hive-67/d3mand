@@ -115,6 +115,8 @@ const t = {
       tabFarewell: "Vidéos d'adieu",
       tabInfo: "Vidéos d'info",
       empty: "Vidéos à venir…",
+      suggestTag: "Vous avez une vidéo à proposer ?",
+      suggestText: "Ce hub existe pour centraliser ce que la communauté produit. Si vous avez vu une vidéo — témoignage, analyse, réaction — qui mérite d'être ici, envoyez-nous le lien accompagné d'une brève explication de ce qui la rend pertinente. On examine chaque suggestion.",
     },
     kit: {
       tag: "Créateurs de contenu & Presse",
@@ -248,6 +250,8 @@ const t = {
       tabFarewell: "Farewell videos",
       tabInfo: "Info videos",
       empty: "Videos coming soon…",
+      suggestTag: "Got a video to suggest?",
+      suggestText: "This hub exists to bring together what the community creates. If you've come across a video — a personal story, an analysis, a reaction — that you think belongs here, send us the link along with a short explanation of why it matters. We review every submission.",
     },
     kit: {
       tag: "Content creators & Press",
