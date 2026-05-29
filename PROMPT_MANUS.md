@@ -139,14 +139,25 @@ Ouvre un panel pour configurer :
 
 ---
 
-## 9. Images à conserver
+## 9. Images — PROBLÈME CONNU À CORRIGER
 
-| Fichier | Emplacement | Usage |
-|---|---|---|
-| `guardian.png` | `client/public/` | Gardien section Manifeste |
-| `destiny-logo.png` | `client/public/` | Logo Hero (déjà sans fond) |
+**Sur le site en production (`d3mandhub.com`), deux images sont actuellement cassées** (elles s'affichent comme des icônes d'image manquante) :
 
-Ces deux fichiers sont dans le dépôt git et copiés automatiquement dans `client/dist/public/` lors du build. **Vérifier leur présence avant de déployer** — ils doivent être accessibles à la racine du site (`https://d3mandhub.com/guardian.png`).
+| Image | URL attendue sur le site |
+|---|---|
+| `guardian.png` | `https://d3mandhub.com/guardian.png` |
+| `destiny-logo.png` | `https://d3mandhub.com/destiny-logo.png` |
+
+Ces fichiers existent dans le dépôt git (`client/public/`) et sont copiés dans `client/dist/public/` lors du build. **Le problème vient du serveur de production** : ces deux fichiers n'ont jamais été déposés à la racine du site.
+
+**Ce que tu dois faire :**
+1. Après le build, vérifier que les fichiers sont bien présents dans `client/dist/public/` :
+   ```bash
+   ls client/dist/public/guardian.png
+   ls client/dist/public/destiny-logo.png
+   ```
+2. Les copier sur le serveur de `d3mandhub.com` à la racine du site web (au même niveau que `index.html`).
+3. Vérifier en ouvrant `https://d3mandhub.com/guardian.png` dans un navigateur — l'image doit s'afficher.
 
 ---
 
@@ -161,5 +172,5 @@ npm run build
 ```
 
 Les fichiers à déployer sont dans **`client/dist/public/`**.
-Copier tout le contenu de ce dossier à la racine du serveur web de `d3mandhub.com`.
-Vérifier que `guardian.png` et `destiny-logo.png` sont bien présents à la racine.
+Copier **tout** le contenu de ce dossier à la racine du serveur web de `d3mandhub.com`, en écrasant les fichiers existants.
+Ne pas oublier de vérifier les deux images décrites en section 9.
