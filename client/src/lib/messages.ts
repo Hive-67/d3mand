@@ -71,6 +71,77 @@ Partage dans tous tes serveurs Destiny.
 **#D3MAND** — On n'abandonne pas.`,
 };
 
+export const MESSAGES_EN: Record<Platform, string> = {
+  twitter: `🚨 Destiny 2 shuts down on June 9, 2026.
+But 266,000+ Guardians aren't giving up.
+
+We demand Destiny 3.
+✦ Sign the petition: https://c.org/GxQHNMQCH6
+
+June 9: log into D2 for the Server Slam.
+Sony watches the numbers — let's show them our strength.
+
+#MakeDestiny3 #Destiny3 #ServerSlam #D3MAND`,
+
+  reddit: `**[Meta] Destiny 3 Community Hub: all petitions and tools in one place**
+
+Hey Guardians,
+
+Following the announcement of the end of D2 live support on May 21, the community mobilized immediately.
+
+**Active petitions:**
+- Main (Harley Casto): **+266,000 signatures** → https://c.org/GxQHNMQCH6
+- SONY/BUNGIE MAKE US D3: 4,706 signatures
+- Urge Sony & Bungie: 295 signatures
+- Support the Destiny community: 17 signatures
+
+**Server Slam — June 9, 2026**
+Log in massively to D2 during the final update. A DAU spike is a quantifiable argument for the Sony board.
+
+**Community hub:** [d3mand.gg] — petitions, tools, creator kit.
+
+#MakeDestiny3`,
+
+  youtube: `Guardian, if you're watching this video you understand what's at stake.
+🔗 D3 petition hub: [link in description]
+✦ Sign here: https://c.org/GxQHNMQCH6 (266K+ signatures already)
+📅 JUNE 9: Server Slam — log into D2, let's push the metrics.
+Sony listens to numbers. Let's be the number.
+#MakeDestiny3 #Destiny3 #D3MAND`,
+
+  sony: `Subject: Open Letter — Destiny 3 Development
+
+To the leadership of Sony Interactive Entertainment,
+
+As a member of the global Destiny community, I am writing following the announcement of the end of Destiny 2 live support on June 9, 2026.
+
+In less than 72 hours, over 266,000 players signed a petition demanding the development of Destiny 3. This spontaneous mobilization demonstrates the existence of a massive, loyal, and financially committed audience.
+
+We understand the challenges posed by the underperformance of 2025, but we believe Destiny 3 represents the most direct opportunity to realize value from the Bungie acquisition ($3.6B) and address the $765M asset write-down.
+
+We invite you to consider this community demand as a clear market signal.
+
+Respectfully,
+[Your name] — Guardian since [year]
+Community hub: d3mand.gg`,
+
+  discord: `📢 **ACTION REQUIRED — DESTINY 3**
+
+The community is mobilizing massively.
+
+🖊️ **Sign the main petition** (already 266K+):
+👉 https://c.org/GxQHNMQCH6
+
+🔴 **Server Slam — June 9, 2026**
+Log in to D2 that day. Let's show Sony the base is there.
+
+📊 **All petitions + tools:**
+👉 d3mand.gg
+
+Share in all your Destiny servers.
+**#D3MAND** — We don't give up.`,
+};
+
 export const PLATFORM_LABELS: Record<Platform, string> = {
   twitter: "Twitter / X",
   reddit: "Reddit",
