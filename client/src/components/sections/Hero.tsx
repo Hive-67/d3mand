@@ -151,14 +151,17 @@ export default function Hero({ totalSignatures }: HeroProps) {
 
         {/* Destiny logo — right side */}
         <div
-          className="hidden lg:block pointer-events-none absolute right-10 xl:right-20 top-1/2 -translate-y-[55%] animate-fade-up"
+          className="hidden lg:block pointer-events-none absolute right-0 xl:right-8 top-1/2 -translate-y-1/2 animate-fade-up"
           style={{ animationDelay: "0.5s" }}
         >
           <img
             src="/destiny-logo.png"
             alt="Destiny"
-            className="w-[340px] xl:w-[420px] select-none opacity-80"
-            style={{ filter: "drop-shadow(0 0 60px rgba(220,100,30,0.35))" }}
+            className="w-[480px] xl:w-[560px] select-none"
+            style={{
+              mixBlendMode: "screen",
+              filter: "drop-shadow(0 0 80px rgba(220,90,20,0.5)) brightness(1.1)",
+            }}
           />
         </div>
 
