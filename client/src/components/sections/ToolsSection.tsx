@@ -137,6 +137,18 @@ export default function ToolsSection() {
               </button>
             </div>
           )}
+
+          {/* Contacts panel — shown only on Sony tab */}
+          {platform === "sony" && (
+            <div className="mt-5 border border-[var(--gold)]/20 bg-[var(--gold)]/[0.03] px-5 py-4 flex flex-wrap gap-x-8 gap-y-3">
+              <div className="font-mono text-[0.55rem] uppercase tracking-[0.3em] text-[var(--gold-dim)] w-full mb-1">
+                {T.tools.contactTag}
+              </div>
+              {T.tools.contactItems.map((c) => (
+                <ContactItem key={c.label} label={c.label} value={c.value} />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Tool grid */}
