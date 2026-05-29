@@ -27,7 +27,7 @@ Suite à l'annonce de la fin du support live de D2 le 21 mai, la communauté s'e
 **Server Slam — 9 juin 2026**
 Connectez-vous massivement à D2 lors de la mise à jour finale. Un pic de DAU est un argument quantifiable auprès du board Sony.
 
-**Site hub communautaire :** [d3mand.gg] — pétitions, outils, kit pour créateurs.
+**Site hub communautaire :** [https://d3mandhub.com/] — pétitions, outils, kit pour créateurs.
 
 #MakeDestiny3`,
 
@@ -52,7 +52,7 @@ Nous vous invitons à considérer cette demande communautaire comme un signal de
 
 Respectueusement,
 [Votre nom] — Gardien depuis [année]
-Hub communautaire : d3mand.gg`,
+Hub communautaire : https://d3mandhub.com/`,
 
   discord: `📢 **ACTION REQUISE — DESTINY 3**
 
@@ -65,7 +65,7 @@ La communauté se mobilise massivement.
 Log in sur D2 ce jour-là. On montre à Sony que la base est là.
 
 📊 **Toutes les pétitions + outils :**
-👉 d3mand.gg
+👉 https://d3mandhub.com/
 
 Partage dans tous tes serveurs Destiny.
 **#D3MAND** — On n'abandonne pas.`,
@@ -98,7 +98,7 @@ Following the announcement of the end of D2 live support on May 21, the communit
 **Server Slam — June 9, 2026**
 Log in massively to D2 during the final update. A DAU spike is a quantifiable argument for the Sony board.
 
-**Community hub:** [d3mand.gg] — petitions, tools, creator kit.
+**Community hub:** [https://d3mandhub.com/] — petitions, tools, creator kit.
 
 #MakeDestiny3`,
 
@@ -123,7 +123,7 @@ We invite you to consider this community demand as a clear market signal.
 
 Respectfully,
 [Your name] — Guardian since [year]
-Community hub: d3mand.gg`,
+Community hub: https://d3mandhub.com/`,
 
   discord: `📢 **ACTION REQUIRED — DESTINY 3**
 
@@ -136,7 +136,7 @@ The community is mobilizing massively.
 Log in to D2 that day. Let's show Sony the base is there.
 
 📊 **All petitions + tools:**
-👉 d3mand.gg
+👉 https://d3mandhub.com/
 
 Share in all your Destiny servers.
 **#D3MAND** — We don't give up.`,

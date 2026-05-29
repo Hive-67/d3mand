@@ -30,7 +30,7 @@ export default function ToolsSection() {
   };
 
   const copyUrl = async () => {
-    await navigator.clipboard.writeText(window.location.href);
+    await navigator.clipboard.writeText("https://d3mandhub.com/");
     toast.success("URL copiée");
   };
 

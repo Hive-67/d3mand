@@ -1,5 +1,6 @@
 /* D3MAND — Top nav. Sticky, glassy, sliding active-section indicator + lang toggle. */
 import { useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
 import { useLang } from "@/contexts/LanguageContext";
 
 export default function Nav() {
@@ -72,14 +73,20 @@ export default function Nav() {
           : "border-b border-transparent"
       }`}
     >
-      <a href="#top" className="block group">
+      <button
+        onClick={async () => {
+          await navigator.clipboard.writeText("https://d3mandhub.com/");
+          toast.success("Lien copié !");
+        }}
+        className="block group text-left"
+      >
         <div className="font-display text-lg sm:text-xl font-black tracking-[0.18em] text-[var(--gold)] text-glow-gold transition-transform group-hover:scale-[1.02]">
           D3MAND
         </div>
-        <div className="hidden sm:block font-mono text-[0.55rem] tracking-[0.15em] text-[var(--muted-foreground)] -mt-0.5">
-          www.d3mandhub.com
+        <div className="hidden sm:block font-mono text-[0.55rem] uppercase tracking-[0.3em] text-[var(--muted-foreground)] -mt-0.5">
+          The Destiny 3 Community Hub
         </div>
-      </a>
+      </button>
 
       <ul ref={listRef} className="hidden lg:flex items-center gap-6 relative py-1">
         {/* Sliding underline */}
