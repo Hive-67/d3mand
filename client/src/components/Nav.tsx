@@ -17,7 +17,6 @@ export default function Nav() {
     { href: "#server-slam", label: T.nav.serverSlam },
     { href: "#tools", label: T.nav.tools },
     { href: "#arguments", label: T.nav.arguments },
-    { href: "#kit", label: T.nav.kit },
     { href: "#videos", label: T.nav.videos },
     { href: "#guestbook", label: T.nav.guestbook },
   ];

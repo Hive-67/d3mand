@@ -12,7 +12,6 @@ import AboutSection from "@/components/sections/AboutSection";
 import ArgumentsSection from "@/components/sections/ArgumentsSection";
 import Hero from "@/components/sections/Hero";
 import GuestbookSection from "@/components/sections/GuestbookSection";
-import KitSection from "@/components/sections/KitSection";
 import VideosSection from "@/components/sections/VideosSection";
 import PetitionsSection from "@/components/sections/PetitionsSection";
 import ServerSlamSection from "@/components/sections/ServerSlamSection";
@@ -107,7 +106,6 @@ export default function Home() {
         <PetitionsSection sigs={sigs} />
         <ArgumentsSection />
         <ToolsSection />
-        <KitSection />
         <VideosSection />
         <GuestbookSection />
         <Footer />

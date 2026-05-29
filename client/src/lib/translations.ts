@@ -78,7 +78,7 @@ const t = {
       kitIntro: "Tu veux parler de D3 sur ta chaîne ? On t'a préparé :",
       kitItems: [
         "Les 6 arguments clés (pourquoi D3 est viable)",
-        "Les chiffres qui tuent (765M de pertes, 220k signatures)",
+        "Les chiffres qui tuent (765M de pertes, 300k signatures)",
         "Les angles d'attaque (nostalgie, viabilité financière, absence de concurrent)",
         "Les vidéos à référencer",
         "Les sources pour tout vérifier",
@@ -162,7 +162,7 @@ const t = {
       titleGold: "arguments",
       titleEnd: "que Sony doit entendre",
       args: [
-        { n: "01", title: "Communauté mondiale prouvée", text: "266 000+ signatures en quelques jours. Des millions de joueurs actifs pendant 12 ans. Destiny est une audience captive, loyale et prête à revenir — une rareté dans l'industrie.", highlight: false },
+        { n: "01", title: "Communauté mondiale prouvée", text: "300 000+ signatures en quelques jours. Des millions de joueurs actifs pendant 12 ans. Destiny est une audience captive, loyale et prête à revenir — une rareté dans l'industrie.", highlight: false },
         { n: "02", title: "Dette technologique à solder", text: "Le « vaulting » de contenus payants prouve les limites structurelles du moteur de Destiny 2. Un nouveau moteur permettrait de préserver l'intégralité de la saga sans compression du catalogue.", highlight: false },
         { n: "03", title: "Lien social irremplaçable", text: "Des millions d'amitiés réelles, construites autour de raids nocturnes et de rituels hebdomadaires. Destiny 3 ne serait pas un jeu — ce serait la préservation d'un tissu social numérique unique.", highlight: false },
         { n: "04", title: "Franchise plus bankable que Marathon", text: "Marathon est un pari risqué sur un marché encombré. Destiny bénéficie d'un univers profond, d'un lore établi sur 12 ans et d'un public qui ne demande qu'à investir dans une suite.", highlight: false },
@@ -308,7 +308,7 @@ const t = {
       kitIntro: "Want to talk about D3 on your channel? We've prepared:",
       kitItems: [
         "The 6 key arguments (why D3 is viable)",
-        "The killer stats ($765M in losses, 220k signatures)",
+        "The killer stats ($765M in losses, 300k signatures)",
         "The angles (nostalgia, financial viability, no competition)",
         "The videos to reference",
         "The sources to verify everything",
@@ -392,7 +392,7 @@ const t = {
       titleGold: "arguments",
       titleEnd: "Sony must hear",
       args: [
-        { n: "01", title: "Proven global community", text: "266,000+ signatures in just a few days. Millions of active players over 12 years. Destiny is a captive, loyal audience ready to return — a rarity in the industry.", highlight: false },
+        { n: "01", title: "Proven global community", text: "300,000+ signatures in just a few days. Millions of active players over 12 years. Destiny is a captive, loyal audience ready to return — a rarity in the industry.", highlight: false },
         { n: "02", title: "Technical debt to clear", text: "The 'vaulting' of paid content proves the structural limits of the Destiny 2 engine. A new engine would preserve the entire saga without catalog compression.", highlight: false },
         { n: "03", title: "Irreplaceable social bonds", text: "Millions of real friendships built around late-night raids and weekly rituals. Destiny 3 wouldn't be a game — it would be the preservation of a unique digital social fabric.", highlight: false },
         { n: "04", title: "More bankable than Marathon", text: "Marathon is a risky bet on a crowded market. Destiny has a deep universe, 12 years of established lore, and an audience that just wants to invest in a sequel.", highlight: false },
