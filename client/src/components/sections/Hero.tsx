@@ -63,19 +63,32 @@ export default function Hero({ totalSignatures }: HeroProps) {
           style={{ animationDelay: "0.3s" }}
         />
 
-        {/* Manifesto */}
-        <div
-          className="mt-8 max-w-xl space-y-2 text-lg sm:text-xl leading-relaxed font-light text-[var(--foreground)] animate-fade-up"
+        {/* Feature list */}
+        <ul
+          className="mt-8 max-w-xl space-y-1.5 animate-fade-up"
           style={{ animationDelay: "0.4s" }}
         >
-          <p>{T.hero.p1}</p>
-          <p>
-            <span className="font-semibold text-[var(--gold)]">
-              {T.hero.p2Prefix}{Math.floor(totalSignatures / 1000)}K{T.hero.p2Suffix}
-            </span>
-          </p>
-          <p>{T.hero.p3}</p>
-        </div>
+          {T.hero.features.map((f: string) => (
+            <li key={f} className="flex items-start gap-2.5 text-base sm:text-lg leading-snug font-light text-[var(--foreground)]">
+              <span className="mt-1 size-1.5 shrink-0 bg-[var(--gold)]" aria-hidden />
+              {f}
+            </li>
+          ))}
+          <li className="flex items-start gap-2.5 text-base sm:text-lg leading-snug font-semibold text-[var(--gold)]">
+            <span className="mt-1 size-1.5 shrink-0 bg-[var(--gold)]" aria-hidden />
+            {T.hero.featuresEnd}
+          </li>
+        </ul>
+
+        {/* Closer */}
+        <p
+          className="mt-5 max-w-xl text-lg sm:text-xl leading-relaxed font-light text-[var(--foreground)] animate-fade-up"
+          style={{ animationDelay: "0.5s" }}
+        >
+          <span className="font-semibold text-[var(--gold)]">
+            {T.hero.p2Prefix}{Math.floor(totalSignatures / 1000)}K+{T.hero.p2Suffix}
+          </span>
+        </p>
 
         {/* CTAs */}
         <div
