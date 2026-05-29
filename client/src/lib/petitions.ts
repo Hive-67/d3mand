@@ -52,10 +52,10 @@ export const PETITIONS: PetitionEntry[] = [
 ];
 
 export const FALLBACK_SIGS: Record<PetitionId, number> = {
-  main: 266000,
-  p2: 4706,
-  p3: 295,
-  p4: 17,
+  main: 300000,
+  p2: 5200,
+  p3: 310,
+  p4: 20,
 };
 
 export type SyncState = "loading" | "ok" | "error" | "fallback";
