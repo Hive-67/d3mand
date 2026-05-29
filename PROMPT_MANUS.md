@@ -1,5 +1,11 @@
 # Prompt pour Manus — Site D3MAND
 
+> **👉 COMMENCE PAR LIRE CE FICHIER EN ENTIER.**
+> C'est le point d'entrée unique du projet. Il t'explique comment récupérer le
+> code, comment lancer le site, où se trouve chaque chose, et les règles à
+> respecter avant toute modification. Ne touche à aucun fichier avant d'avoir
+> lu les 9 sections ci-dessous. Ignore tout autre guide : celui-ci fait foi.
+
 ## 1. Récupérer le code
 
 Le site est dans le dépôt GitHub suivant :
