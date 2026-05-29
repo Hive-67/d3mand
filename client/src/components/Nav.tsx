@@ -15,7 +15,7 @@ export default function Nav() {
   const [activeHref, setActiveHref] = useState<string | null>(null);
   const [indicator, setIndicator] = useState({ left: 0, width: 0, visible: false });
   const listRef = useRef<HTMLUListElement>(null);
-  const itemRefs = useRef<Map<string, HTMLLIElement>>(new Map());
+  const itemRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -57,13 +57,13 @@ export default function Nav() {
       setIndicator((prev) => ({ ...prev, visible: false }));
       return;
     }
-    const li = itemRefs.current.get(activeHref);
-    if (!li) return;
+    const anchor = itemRefs.current.get(activeHref);
+    if (!anchor) return;
     const listRect = listRef.current.getBoundingClientRect();
-    const liRect = li.getBoundingClientRect();
+    const anchorRect = anchor.getBoundingClientRect();
     setIndicator({
-      left: liRect.left - listRect.left,
-      width: liRect.width,
+      left: anchorRect.left - listRect.left,
+      width: anchorRect.width,
       visible: true,
     });
   }, [activeHref]);
@@ -100,16 +100,13 @@ export default function Nav() {
         />
 
         {NAV_LINKS.map((link) => (
-          <li
-            key={link.href}
-            ref={(el) => {
-              if (el) itemRefs.current.set(link.href, el);
-              else itemRefs.current.delete(link.href);
-            }}
-            className="px-3 py-1"
-          >
+          <li key={link.href} className="py-1">
             <a
               href={link.href}
+              ref={(el) => {
+                if (el) itemRefs.current.set(link.href, el);
+                else itemRefs.current.delete(link.href);
+              }}
               className="relative font-display uppercase tracking-[0.25em] transition-all duration-300 ease-out inline-block"
               style={
                 activeHref === link.href
