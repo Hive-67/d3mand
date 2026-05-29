@@ -86,15 +86,16 @@ export default function Nav() {
       </a>
 
       <ul ref={listRef} className="hidden lg:flex items-center gap-6 relative py-1">
-        {/* Sliding highlight — moves to the active <li> */}
+        {/* Sliding underline — moves to the active <li> */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 rounded-sm transition-all duration-300 ease-out
-                     bg-[var(--gold)]/8 border border-[var(--gold)]/20"
+          className="pointer-events-none absolute bottom-0 h-px transition-all duration-300 ease-out"
           style={{
             left: indicator.left,
             width: indicator.width,
             opacity: indicator.visible ? 1 : 0,
+            background: "var(--gold)",
+            boxShadow: "0 0 8px 1px var(--gold)",
           }}
         />
 
@@ -109,11 +110,12 @@ export default function Nav() {
           >
             <a
               href={link.href}
-              className={`relative font-display text-[0.65rem] uppercase tracking-[0.25em] transition-colors duration-200 ${
+              className="relative font-display text-[0.65rem] uppercase tracking-[0.25em] transition-all duration-200"
+              style={
                 activeHref === link.href
-                  ? "text-[var(--gold)]"
-                  : "text-[var(--muted-foreground)] hover:text-[var(--gold)]"
-              }`}
+                  ? { color: "var(--gold)", textShadow: "0 0 12px color-mix(in srgb, var(--gold) 70%, transparent)" }
+                  : undefined
+              }
             >
               {link.label}
             </a>
