@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReveal } from "@/hooks/useReveal";
 import { useLang } from "@/contexts/LanguageContext";
 
@@ -30,6 +30,9 @@ export default function AboutSection() {
   const ref = useReveal();
   const { T } = useLang();
   const { d, h, m, pct } = useTwoYearCountdown();
+  const [contactName, setContactName] = useState("");
+  const [contactMsg, setContactMsg] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
 
   return (
     <section id="about" className="relative py-20 sm:py-28">
@@ -89,7 +92,7 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Right — body text */}
+          {/* Right — body text + contact form */}
           <div className="space-y-6 text-base sm:text-lg leading-relaxed text-[var(--foreground)]/80 font-light lg:pt-16">
             <p>{T.about.p1}</p>
             <p>{T.about.p2}</p>
@@ -102,6 +105,43 @@ export default function AboutSection() {
             <p className="font-mono text-sm text-[var(--muted-foreground)] tracking-wide pt-2 border-l-2 border-[var(--gold)]/30 pl-4">
               {T.about.p6}
             </p>
+
+            {/* Contact form */}
+            <div className="pt-4 border-t border-white/5">
+              <div className="codex-tag mb-4 text-[0.6rem]">{T.about.contactTag}</div>
+              <form
+                ref={formRef}
+                className="space-y-3"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const subject = encodeURIComponent(T.about.contactSubject);
+                  const body = encodeURIComponent(`${T.about.contactFrom} ${contactName}\n\n${contactMsg}`);
+                  window.location.href = `mailto:coalition.destiny@gmail.com?subject=${subject}&body=${body}`;
+                }}
+              >
+                <input
+                  value={contactName}
+                  onChange={(e) => setContactName(e.target.value)}
+                  required
+                  placeholder={T.about.contactNamePlaceholder}
+                  className="w-full border border-white/5 bg-black/30 px-4 py-2.5 font-mono text-sm text-[var(--foreground)] outline-none focus:border-[var(--gold)]/40 placeholder:text-[var(--muted-foreground)]/40 transition-colors"
+                />
+                <textarea
+                  value={contactMsg}
+                  onChange={(e) => setContactMsg(e.target.value)}
+                  required
+                  rows={4}
+                  placeholder={T.about.contactMsgPlaceholder}
+                  className="w-full resize-none border border-white/5 bg-black/30 px-4 py-2.5 font-mono text-sm text-[var(--foreground)] outline-none focus:border-[var(--gold)]/40 placeholder:text-[var(--muted-foreground)]/40 transition-colors leading-relaxed"
+                />
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-2 border border-[var(--gold)]/30 bg-transparent px-5 py-2.5 font-display text-[0.6rem] font-bold uppercase tracking-[0.2em] text-[var(--gold)] transition-all hover:border-[var(--gold)] hover:bg-[var(--gold)]/5 active:scale-[0.97]"
+                >
+                  {T.about.contactSend} ↗
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

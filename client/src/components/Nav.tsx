@@ -19,6 +19,7 @@ export default function Nav() {
     { href: "#arguments", label: T.nav.arguments },
     { href: "#kit", label: T.nav.kit },
     { href: "#videos", label: T.nav.videos },
+    { href: "#guestbook", label: T.nav.guestbook },
   ];
 
   useEffect(() => {

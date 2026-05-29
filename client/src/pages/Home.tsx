@@ -11,6 +11,7 @@ import SetupModal from "@/components/SetupModal";
 import AboutSection from "@/components/sections/AboutSection";
 import ArgumentsSection from "@/components/sections/ArgumentsSection";
 import Hero from "@/components/sections/Hero";
+import GuestbookSection from "@/components/sections/GuestbookSection";
 import KitSection from "@/components/sections/KitSection";
 import VideosSection from "@/components/sections/VideosSection";
 import PetitionsSection from "@/components/sections/PetitionsSection";
@@ -108,6 +109,7 @@ export default function Home() {
         <ToolsSection />
         <KitSection />
         <VideosSection />
+        <GuestbookSection />
         <Footer />
       </div>
 

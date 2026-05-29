@@ -72,19 +72,6 @@ export default function VideosSection() {
           </div>
         )}
 
-        {/* Suggest a video */}
-        <div className="mt-10 border border-[var(--gold)]/10 bg-[var(--gold)]/[0.03] p-6 sm:p-8">
-          <div className="codex-tag mb-3 text-[0.6rem]">{T.videos.suggestTag}</div>
-          <p className="max-w-2xl text-sm leading-relaxed text-[var(--muted-foreground)]">
-            {T.videos.suggestText}
-          </p>
-          <a
-            href="mailto:coalition.destiny@gmail.com"
-            className="mt-4 inline-flex items-center gap-2 border border-[var(--gold)]/30 px-5 py-2.5 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-[var(--gold)] transition-all hover:border-[var(--gold)] hover:bg-[var(--gold)]/5"
-          >
-            coalition.destiny@gmail.com ↗
-          </a>
-        </div>
       </div>
     </section>
   );
