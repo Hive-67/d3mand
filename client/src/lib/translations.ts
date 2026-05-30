@@ -175,6 +175,8 @@ const t = {
       resources: "Ressources directes",
       toastCopied: "Message copié",
       toastUrlCopied: "URL copiée",
+      sendToSony: "Ouvrir dans ma messagerie",
+      sonySubject: "Lettre ouverte — Développement de Destiny 3",
       contactTag: "Contacts officiels",
       contactItems: [
         { label: "Sony Interactive Entertainment PR", value: "press@sie.sony.com" },
@@ -402,6 +404,8 @@ const t = {
       resources: "Direct resources",
       toastCopied: "Message copied",
       toastUrlCopied: "URL copied",
+      sendToSony: "Open in my email app",
+      sonySubject: "Open Letter — Destiny 3 Development",
       contactTag: "Official contacts",
       contactItems: [
         { label: "Sony Interactive Entertainment PR", value: "press@sie.sony.com" },

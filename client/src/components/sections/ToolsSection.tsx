@@ -111,30 +111,50 @@ export default function ToolsSection() {
               <pre className="border border-white/5 bg-black/30 p-5 font-mono text-sm leading-relaxed text-[var(--foreground)] whitespace-pre-wrap min-h-[160px] overflow-x-auto">
                 {MESSAGES[platform]}
               </pre>
-              <button
-                onClick={copyFr}
-                className={`mt-4 inline-flex items-center gap-2 px-5 py-3 font-display text-[0.65rem] font-bold uppercase tracking-[0.2em] transition-all active:scale-[0.97] ${
-                  copiedFr ? "bg-emerald-500 text-white" : "bg-[var(--gold)] text-[var(--black)] hover:bg-[var(--gold-light)] hover:glow-gold"
-                }`}
-              >
-                {copiedFr ? <Check className="size-4" /> : <Copy className="size-4" />}
-                {copiedFr ? T.tools.copied : T.tools.copy}
-              </button>
+              {platform === "sony" ? (
+                <a
+                  href={`mailto:press@sie.sony.com?subject=${encodeURIComponent(T.tools.sonySubject)}&body=${encodeURIComponent(MESSAGES.sony)}`}
+                  className="mt-4 inline-flex items-center gap-2 px-5 py-3 font-display text-[0.65rem] font-bold uppercase tracking-[0.2em] bg-[var(--gold)] text-[var(--black)] hover:bg-[var(--gold-light)] hover:glow-gold transition-all active:scale-[0.97]"
+                >
+                  <Mail className="size-4" />
+                  {T.tools.sendToSony}
+                </a>
+              ) : (
+                <button
+                  onClick={copyFr}
+                  className={`mt-4 inline-flex items-center gap-2 px-5 py-3 font-display text-[0.65rem] font-bold uppercase tracking-[0.2em] transition-all active:scale-[0.97] ${
+                    copiedFr ? "bg-emerald-500 text-white" : "bg-[var(--gold)] text-[var(--black)] hover:bg-[var(--gold-light)] hover:glow-gold"
+                  }`}
+                >
+                  {copiedFr ? <Check className="size-4" /> : <Copy className="size-4" />}
+                  {copiedFr ? T.tools.copied : T.tools.copy}
+                </button>
+              )}
             </div>
           ) : (
             <div>
               <pre className="border border-[var(--cobalt)]/20 bg-black/30 p-5 font-mono text-sm leading-relaxed text-[var(--foreground)] whitespace-pre-wrap min-h-[160px] overflow-x-auto">
                 {MESSAGES_EN[platform]}
               </pre>
-              <button
-                onClick={copyEn}
-                className={`mt-4 inline-flex items-center gap-2 px-5 py-3 font-display text-[0.65rem] font-bold uppercase tracking-[0.2em] transition-all active:scale-[0.97] ${
-                  copiedEn ? "bg-emerald-500 text-white" : "bg-[var(--gold)] text-[var(--black)] hover:bg-[var(--gold-light)] hover:glow-gold"
-                }`}
-              >
-                {copiedEn ? <Check className="size-4" /> : <Copy className="size-4" />}
-                {copiedEn ? T.tools.copied : T.tools.copy}
-              </button>
+              {platform === "sony" ? (
+                <a
+                  href={`mailto:press@sie.sony.com?subject=${encodeURIComponent(T.tools.sonySubject)}&body=${encodeURIComponent(MESSAGES_EN.sony)}`}
+                  className="mt-4 inline-flex items-center gap-2 px-5 py-3 font-display text-[0.65rem] font-bold uppercase tracking-[0.2em] bg-[var(--gold)] text-[var(--black)] hover:bg-[var(--gold-light)] hover:glow-gold transition-all active:scale-[0.97]"
+                >
+                  <Mail className="size-4" />
+                  {T.tools.sendToSony}
+                </a>
+              ) : (
+                <button
+                  onClick={copyEn}
+                  className={`mt-4 inline-flex items-center gap-2 px-5 py-3 font-display text-[0.65rem] font-bold uppercase tracking-[0.2em] transition-all active:scale-[0.97] ${
+                    copiedEn ? "bg-emerald-500 text-white" : "bg-[var(--gold)] text-[var(--black)] hover:bg-[var(--gold-light)] hover:glow-gold"
+                  }`}
+                >
+                  {copiedEn ? <Check className="size-4" /> : <Copy className="size-4" />}
+                  {copiedEn ? T.tools.copied : T.tools.copy}
+                </button>
+              )}
             </div>
           )}
 
