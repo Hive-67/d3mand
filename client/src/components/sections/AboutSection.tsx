@@ -58,7 +58,7 @@ export default function AboutSection() {
             </div>
 
             {/* 2-year countdown — where the guardian looks */}
-            <div className="mt-8 max-w-[340px] border border-[var(--gold)]/20 bg-[var(--gold)]/3 p-4">
+            <div className="mt-8 w-[360px] max-w-full border border-[var(--gold)]/20 bg-[var(--gold)]/3 p-4">
               <div className="font-mono text-[0.55rem] uppercase tracking-[0.35em] text-[var(--gold-dim)] mb-3">
                 {T.about.countdown}
               </div>
