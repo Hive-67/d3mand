@@ -228,6 +228,8 @@ const t = {
       credit: "Fait par la communauté, pour la communauté · #D3MAND · #MakeDestiny3 · 2026",
       visitors: "visites",
       kofi: "Contribuer aux frais du hub",
+      hubHours: "h investies",
+      hubCost: "€ de frais",
     },
   },
 
@@ -458,6 +460,8 @@ const t = {
       credit: "Made by the community, for the community · #D3MAND · #MakeDestiny3 · 2026",
       visitors: "visits",
       kofi: "Support the hub",
+      hubHours: "h invested",
+      hubCost: "€ in costs",
     },
   },
 } as const;

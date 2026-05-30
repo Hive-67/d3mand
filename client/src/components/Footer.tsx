@@ -1,10 +1,12 @@
 /* D3MAND — Footer */
 import { useLang } from "@/contexts/LanguageContext";
 import { useVisitorCount } from "@/hooks/useVisitorCount";
+import { useHubStats } from "@/hooks/useHubStats";
 
 export default function Footer() {
   const { T } = useLang();
   const visitors = useVisitorCount();
+  const { hours, cost } = useHubStats();
 
   return (
     <footer className="border-t border-[var(--gold)]/15 bg-[var(--dark)] py-14">
@@ -26,6 +28,15 @@ export default function Footer() {
             <span className="font-mono text-[0.6rem] uppercase tracking-[0.25em] text-[var(--muted-foreground)]/70">
               {visitors.toLocaleString()} {T.footer.visitors}
             </span>
+          </div>
+        )}
+
+        {/* Hub stats */}
+        {(hours !== null || cost !== null) && (
+          <div className="mt-6 flex items-center justify-center gap-6 font-mono text-[0.6rem] uppercase tracking-[0.25em] text-[var(--muted-foreground)]/50">
+            {hours !== null && <span>⏱ <span className="text-[var(--gold-dim)]">{hours}</span>{T.footer.hubHours}</span>}
+            {hours !== null && cost !== null && <span className="text-[var(--gold)]/20">·</span>}
+            {cost !== null && <span>💸 <span className="text-[var(--gold-dim)]">{cost}</span>{T.footer.hubCost}</span>}
           </div>
         )}
 
