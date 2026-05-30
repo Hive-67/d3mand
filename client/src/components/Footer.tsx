@@ -29,6 +29,18 @@ export default function Footer() {
           </div>
         )}
 
+        {/* Ko-fi */}
+        <div className="mt-6">
+          <a
+            href="https://ko-fi.com/bunkerd3mandhub"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 border border-[var(--gold)]/20 px-4 py-2 font-mono text-[0.6rem] uppercase tracking-[0.25em] text-[var(--muted-foreground)]/60 transition-all hover:border-[var(--gold)]/40 hover:text-[var(--gold-dim)]"
+          >
+            ♥ {T.footer.kofi}
+          </a>
+        </div>
+
         <div className="mt-6 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-[var(--muted-foreground)]/50">
           {T.footer.credit}
         </div>

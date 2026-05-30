@@ -227,6 +227,7 @@ const t = {
       sources: "Sources : IGN SEA · TweakTown · DualShockers · Bungie.net · Reddit r/destiny2 · Change.org",
       credit: "Fait par la communauté, pour la communauté · #D3MAND · #MakeDestiny3 · 2026",
       visitors: "visites",
+      kofi: "Contribuer aux frais du hub",
     },
   },
 
@@ -456,6 +457,7 @@ const t = {
       sources: "Sources: IGN SEA · TweakTown · DualShockers · Bungie.net · Reddit r/destiny2 · Change.org",
       credit: "Made by the community, for the community · #D3MAND · #MakeDestiny3 · 2026",
       visitors: "visits",
+      kofi: "Support the hub",
     },
   },
 } as const;
