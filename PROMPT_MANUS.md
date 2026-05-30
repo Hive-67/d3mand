@@ -161,7 +161,29 @@ Ces fichiers existent dans le dépôt git (`client/public/`) et sont copiés dan
 
 ---
 
-## 10. Déploiement
+## 10. Règle de synchronisation GitHub (IMPORTANT)
+
+Après **chaque modification** apportée par l'agent (Manus ou Claude), les fichiers source modifiés doivent être **poussés sur GitHub** (`branche : claude/site-visual-design-5LZF6`) avant de créer le checkpoint Manus.
+
+**Workflow obligatoire après toute modification :**
+1. Modifier les fichiers source dans le projet
+2. `git add` + `git commit` + `git push origin claude/site-visual-design-5LZF6`
+3. Rebuilder (`npm run build`)
+4. Créer le checkpoint Manus
+
+**Pourquoi ?** GitHub est la source de vérité. Si l'agent ne pousse pas ses modifications, la prochaine session ne les verra pas et risque d'écraser le travail lors d'un `git pull`.
+
+**Commande de push :**
+```bash
+cd /home/ubuntu/d3mand-github
+git add -A
+git commit -m "[description courte de la modification]"
+git push origin claude/site-visual-design-5LZF6
+```
+
+---
+
+## 11. Déploiement
 
 ```bash
 git checkout claude/site-visual-design-5LZF6
