@@ -33,10 +33,27 @@ export default function Footer() {
 
         {/* Hub stats */}
         {(hours !== null || cost !== null) && (
-          <div className="mt-6 flex items-center justify-center gap-6 font-mono text-[0.6rem] uppercase tracking-[0.25em] text-[var(--muted-foreground)]/50">
-            {hours !== null && <span>⏱ <span className="text-[var(--gold-dim)]">{hours}</span>{T.footer.hubHours}</span>}
-            {hours !== null && cost !== null && <span className="text-[var(--gold)]/20">·</span>}
-            {cost !== null && <span>💸 <span className="text-[var(--gold-dim)]">{cost}</span>{T.footer.hubCost}</span>}
+          <div className="mt-8 inline-flex flex-col items-center gap-3 border border-[var(--gold)]/15 bg-[var(--gold)]/[0.03] px-8 py-4">
+            <div className="font-mono text-[0.55rem] uppercase tracking-[0.35em] text-[var(--gold-dim)]">
+              {T.footer.hubUntilNow}
+            </div>
+            <div className="flex items-center gap-6">
+              {hours !== null && (
+                <div className="flex flex-col items-center gap-0.5">
+                  <span className="font-display text-2xl font-black text-[var(--gold)] tabular-nums">{hours}</span>
+                  <span className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-[var(--muted-foreground)]/60">{T.footer.hubHours}</span>
+                </div>
+              )}
+              {hours !== null && cost !== null && (
+                <div className="h-8 w-px bg-[var(--gold)]/15" />
+              )}
+              {cost !== null && (
+                <div className="flex flex-col items-center gap-0.5">
+                  <span className="font-display text-2xl font-black text-[var(--gold)] tabular-nums">{cost}€</span>
+                  <span className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-[var(--muted-foreground)]/60">{T.footer.hubCost}</span>
+                </div>
+              )}
+            </div>
           </div>
         )}
 
