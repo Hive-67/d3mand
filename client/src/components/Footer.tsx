@@ -40,8 +40,8 @@ export default function Footer() {
             <div className="flex items-center gap-6">
               {hours !== null && (
                 <div className="flex flex-col items-center gap-0.5">
-                  <span className="font-display text-2xl font-black text-[var(--gold)] tabular-nums">{hours}</span>
-                  <span className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-[var(--muted-foreground)]/60">{T.footer.hubHours}</span>
+                  <span className="font-display text-2xl font-black text-[var(--flame)] tabular-nums">{hours}h</span>
+                  <span className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-[var(--gold)]">{T.footer.hubHours}</span>
                 </div>
               )}
               {hours !== null && cost !== null && (
@@ -49,8 +49,8 @@ export default function Footer() {
               )}
               {cost !== null && (
                 <div className="flex flex-col items-center gap-0.5">
-                  <span className="font-display text-2xl font-black text-[var(--gold)] tabular-nums">{cost}€</span>
-                  <span className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-[var(--muted-foreground)]/60">{T.footer.hubCost}</span>
+                  <span className="font-display text-2xl font-black text-[var(--flame)] tabular-nums">{cost}€</span>
+                  <span className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-[var(--gold)]">{T.footer.hubCost}</span>
                 </div>
               )}
             </div>

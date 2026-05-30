@@ -229,8 +229,8 @@ const t = {
       visitors: "visites",
       kofi: "Contribuer aux frais du hub",
       hubUntilNow: "Jusqu'à présent",
-      hubHours: "h investies",
-      hubCost: "€ de frais",
+      hubHours: "investies",
+      hubCost: "de frais",
     },
   },
 
@@ -462,8 +462,8 @@ const t = {
       visitors: "visits",
       kofi: "Support the hub",
       hubUntilNow: "So far",
-      hubHours: "h invested",
-      hubCost: "€ in costs",
+      hubHours: "invested",
+      hubCost: "in costs",
     },
   },
 } as const;
