@@ -21,7 +21,7 @@ export default function Footer() {
           {T.footer.sources}
         </p>
 
-        {/* Visitor counter — centered above stats */}
+        {/* Visitor counter */}
         {visitors !== null && (
           <div className="mt-6 flex items-center justify-center gap-2 border border-[var(--gold)]/15 px-3 py-1.5">
             <span className="size-1.5 rounded-full bg-emerald-500" />
@@ -31,8 +31,8 @@ export default function Footer() {
           </div>
         )}
 
-        {/* Hub stats — smaller and centered */}
-        <div className="mt-4 flex flex-col items-center gap-2 border border-[var(--gold)]/15 bg-[var(--gold)]/[0.03] px-6 py-3">
+        {/* Hub stats */}
+        <div id="support" className="mt-4 flex flex-col items-center gap-2 border border-[var(--gold)]/15 bg-[var(--gold)]/[0.03] px-6 py-3">
           <div className="font-mono text-[0.5rem] uppercase tracking-[0.35em] text-[var(--gold-dim)]">
             {T.footer.hubUntilNow}
           </div>

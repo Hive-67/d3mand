@@ -18,6 +18,7 @@ export default function Nav() {
     { href: "#tools", label: T.nav.tools },
     { href: "#videos", label: T.nav.videos },
     { href: "#guestbook", label: T.nav.guestbook },
+    { href: "#support", label: `♥ ${T.nav.support}`, special: true },
   ];
 
   useEffect(() => {
@@ -119,7 +120,9 @@ export default function Nav() {
               }}
               className="relative font-display uppercase tracking-[0.1em] transition-all duration-300 ease-out inline-block hover:text-[var(--gold)]"
               style={
-                activeHref === link.href
+                link.special
+                  ? { fontSize: "0.6rem", color: "var(--flame)", transform: "translateY(0px)" }
+                  : activeHref === link.href
                   ? { color: "var(--gold)", fontSize: "0.65rem", transform: "translateY(-2px)", textShadow: "0 0 14px color-mix(in srgb, var(--gold) 65%, transparent)" }
                   : { fontSize: "0.6rem", transform: "translateY(0px)", color: "var(--muted-foreground)" }
               }
