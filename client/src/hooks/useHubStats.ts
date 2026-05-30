@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 
 const SHEET_KEY = "d3mand_sheet_url";
 
-export type HubStats = { hours: number | null; cost: number | null };
+// Fallback values — displayed when no Sheet is configured or fetch fails
+const FALLBACK_HOURS = 150;
+const FALLBACK_COST = 85;
+
+export type HubStats = { hours: number; cost: number };
 
 export function useHubStats(): HubStats {
-  const [stats, setStats] = useState<HubStats>({ hours: null, cost: null });
+  const [stats, setStats] = useState<HubStats>({ hours: FALLBACK_HOURS, cost: FALLBACK_COST });
 
   useEffect(() => {
     const url = (() => { try { return localStorage.getItem(SHEET_KEY); } catch { return null; } })();
@@ -13,7 +17,7 @@ export function useHubStats(): HubStats {
     fetch(url)
       .then((r) => r.text())
       .then((text) => {
-        const result: HubStats = { hours: null, cost: null };
+        const result: HubStats = { hours: FALLBACK_HOURS, cost: FALLBACK_COST };
         text.trim().split("\n").forEach((line) => {
           const [id, , val] = line.split(",");
           const n = parseInt(val?.trim());

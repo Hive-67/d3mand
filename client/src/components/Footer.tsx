@@ -32,30 +32,22 @@ export default function Footer() {
         )}
 
         {/* Hub stats */}
-        {(hours !== null || cost !== null) && (
-          <div className="mt-8 inline-flex flex-col items-center gap-3 border border-[var(--gold)]/15 bg-[var(--gold)]/[0.03] px-8 py-4">
-            <div className="font-mono text-[0.55rem] uppercase tracking-[0.35em] text-[var(--gold-dim)]">
-              {T.footer.hubUntilNow}
+        <div className="mt-8 inline-flex flex-col items-center gap-3 border border-[var(--gold)]/15 bg-[var(--gold)]/[0.03] px-8 py-4">
+          <div className="font-mono text-[0.55rem] uppercase tracking-[0.35em] text-[var(--gold-dim)]">
+            {T.footer.hubUntilNow}
+          </div>
+          <div className="flex items-center gap-6">
+            <div className="flex flex-col items-center gap-0.5">
+              <span className="font-display text-2xl font-black text-[var(--flame)] tabular-nums">{hours}h</span>
+              <span className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-[var(--gold)]">{T.footer.hubHours}</span>
             </div>
-            <div className="flex items-center gap-6">
-              {hours !== null && (
-                <div className="flex flex-col items-center gap-0.5">
-                  <span className="font-display text-2xl font-black text-[var(--flame)] tabular-nums">{hours}h</span>
-                  <span className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-[var(--gold)]">{T.footer.hubHours}</span>
-                </div>
-              )}
-              {hours !== null && cost !== null && (
-                <div className="h-8 w-px bg-[var(--gold)]/15" />
-              )}
-              {cost !== null && (
-                <div className="flex flex-col items-center gap-0.5">
-                  <span className="font-display text-2xl font-black text-[var(--flame)] tabular-nums">{cost}€</span>
-                  <span className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-[var(--gold)]">{T.footer.hubCost}</span>
-                </div>
-              )}
+            <div className="h-8 w-px bg-[var(--gold)]/15" />
+            <div className="flex flex-col items-center gap-0.5">
+              <span className="font-display text-2xl font-black text-[var(--flame)] tabular-nums">{cost}€</span>
+              <span className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-[var(--gold)]">{T.footer.hubCost}</span>
             </div>
           </div>
-        )}
+        </div>
 
         {/* Ko-fi */}
         <div className="mt-6">
