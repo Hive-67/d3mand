@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 const SHEET_KEY = "d3mand_sheet_url";
 
 // Fallback values — displayed when no Sheet is configured or fetch fails
-const FALLBACK_HOURS = 150;
-const FALLBACK_COST = 85;
+const FALLBACK_HOURS = 26;
+const FALLBACK_COST = 120;
 
 export type HubStats = { hours: number; cost: number };
 
