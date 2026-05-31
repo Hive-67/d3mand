@@ -8,6 +8,8 @@ type VideoEntry = { id: string; url: string; short?: boolean };
 
 const FAREWELL: VideoEntry[] = [
   { id: "B7yh77LOd24", url: "https://youtube.com/shorts/B7yh77LOd24", short: true },
+  { id: "QXr_AlUAsU8", url: "https://youtube.com/shorts/QXr_AlUAsU8", short: true },
+  { id: "NZu-0A1rG7c", url: "https://youtube.com/shorts/NZu-0A1rG7c", short: true },
   { id: "-27OXz4NZcs", url: "https://youtu.be/-27OXz4NZcs" },
   { id: "zYyDfYe96Hg", url: "https://youtu.be/zYyDfYe96Hg" },
   { id: "HuWVUxOkz5s", url: "https://youtu.be/HuWVUxOkz5s" },

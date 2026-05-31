@@ -1,0 +1,185 @@
+D3MAND — SYNTHÈSE DE SESSION
+=============================
+Date : 31 mai 2026
+Projet : https://github.com/hive-67/d3mand
+Branche de travail : claude/site-visual-design-5LZF6
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. CONTEXTE GÉNÉRAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+D3MAND est un site communautaire pour soutenir la création de Destiny 3.
+Stack : React 19 + TypeScript + Vite 7 + Tailwind CSS 4.
+100 % statique côté client — aucun back-end propre.
+Déploiement géré par Manus sur un serveur externe.
+Deux agents IA collaborent : Claude (toi) pour le code, Manus pour le déploiement.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. TRADUCTIONS FR/EN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Fichier central : client/src/lib/translations.ts
+Règle : TOUT texte visible passe par useLang() — jamais de texte hardcodé.
+Clés ajoutées cette session :
+  - nav.support ("Soutenir" / "Support")
+  - tools.sendToSony, tools.sonySubject
+  - footer.kofi, footer.hubUntilNow, footer.hubHours, footer.hubCost
+  - about.sec (compte à rebours)
+  - serverSlam.* (section Server Slam)
+  - arguments.args[] (liste d'arguments)
+  - tools.contactItems[], tools.cards[]
+Clés supprimées : about.kitTag, about.kitIntro, about.kitItems, about.kitNote
+Modification : about.p4 — suppression de "Zéro pub. Zéro monétisation."
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. NAVIGATION (Nav.tsx)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ordre des liens (correspond à l'ordre de défilement de la page) :
+  Manifeste → Pétitions → Arguments → Outils → Vidéos → Messages → ♥ Soutenir
+
+Lien ♥ Soutenir :
+  - Couleur : var(--flame) (orange)
+  - Pointe vers #support dans le footer
+  - special: true → pas d'indicateur actif
+
+Alias IntersectionObserver :
+  { "server-slam": "petitions" }
+  → faire défiler dans la section Server Slam garde Pétitions en surbrillance dans le nav.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. FOOTER (Footer.tsx)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ajouts :
+  - Bloc "Jusqu'à présent" avec id="support" (ancre nav)
+  - Heures investies et frais engagés en orange avec labels en or
+  - Bouton Ko-fi : https://ko-fi.com/bunkerd3mandhub
+
+Hook useHubStats (client/src/hooks/useHubStats.ts) :
+  - Lit le même CSV Google Sheet que les pétitions
+  - Lignes spéciales : id="hours" et id="cost", valeur en colonne C
+  - Valeurs par défaut : 26h et 120€ (affichées même sans Sheet configuré)
+  - Toujours affiché (pas conditionnel sur null)
+
+Pour mettre à jour les compteurs :
+  Ouvrir la Google Sheet "D3MAND Petitions"
+  → modifier la valeur en colonne C des lignes hours et cost
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. PÉTITIONS (petitions.ts)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Réduit à 2 pétitions :
+  - main : "Petition Sony to develop Destiny 3" (Harley Casto) — 300 000 signataires cible
+  - p2   : "SONY/BUNGIE MAKE US D3" (amburr.) — 5 000 signataires cible
+
+FALLBACK_SIGS = { main: 300000, p2: 5200 }
+Compteur "6 pétitions actives" supprimé.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. SECTION MANIFESTE (AboutSection.tsx)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Kit Créateurs entièrement supprimé (JSX + traductions)
+- Compte à rebours : 4 unités (j / h / m / s), mis à jour chaque seconde
+- Largeur fixe w-[360px] max-w-full pour éviter le jitter lors du changement de chiffres
+- Panneau défilant (max-h-[420px]) : Comment agir + Timeline seulement
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7. SECTION OUTILS (ToolsSection.tsx)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Code d'intégration embed déplacé depuis KitSection (supprimée)
+- ContactItem : clic → copie dans le presse-papier, survol affiche icône copie
+- Onglet Sony :
+    → Bouton mailto qui ouvre l'appli email avec press@sie.sony.com,
+      sujet et message pré-remplis
+- Contacts Sony affichés inline sous le message quand l'onglet Sony est actif
+- Autres onglets : bouton copie normal
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8. LIVRE D'OR (GuestbookSection.tsx)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- GET scriptUrl → retourne GuestMsg[] JSON
+- POST scriptUrl (mode: "no-cors"), corps : JSON.stringify({name, message})
+- URL du script stockée dans localStorage sous "d3mand_guestbook_url"
+- Configuré via le panneau admin invisible : Ctrl+Shift+A
+
+Mise en place Google Apps Script :
+  - Google Sheet "D3MAND Guestbook" : colonnes approved / date / name / message
+  - Script déployé comme application web (Exécuter en tant que : Moi, Accès : Tous)
+  - URL configurée dans le site via Ctrl+Shift+A
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+9. VIDÉOS (VideosSection.tsx)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Deux onglets : Adieux (farewell) et Info
+Shorts ajoutés dans FAREWELL :
+  - QXr_AlUAsU8
+  - NZu-0A1rG7c
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+10. BUGS RÉSOLUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Compte à rebours qui sautait : max-w trop étroit (300px). Corrigé → w-[360px] max-w-full
+- Indicateur nav qui sautait : ordre des liens ne correspondait pas à l'ordre de la page
+- Conflit de merge avec Manus sur Footer.tsx : résolu en prenant la version Manus + ajout id="support"
+- Pétitions affichaient 220k/260k : corrigé en 300k / 300 000+
+- Lien Kit Créateurs restant dans les traductions après suppression du JSX : nettoyé
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+11. IMAGES CASSÉES EN PRODUCTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Fichiers concernés : guardian.png, destiny-logo.png
+Ils existent dans client/public/ et dist/ mais n'ont jamais été copiés sur le serveur.
+Action requise de Manus :
+  cp dist/guardian.png /var/www/d3mand/guardian.png
+  cp dist/destiny-logo.png /var/www/d3mand/destiny-logo.png
+  (adapter le chemin si différent)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+12. KO-FI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Compte : https://ko-fi.com/bunkerd3mandhub
+Avantages vs Buy Me a Coffee : 0 % de commission, PayPal supporté
+Bouton discret dans le footer, lien séparé dans le nav (♥ Soutenir → #support)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+13. PROMPT_MANUS.md
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Fichier à la racine du repo — guide unique pour Manus.
+11 sections couvrant : stack, règles de code, traductions, pétitions,
+livre d'or, déploiement, images, synchronisation GitHub.
+Règle : Manus doit toujours pusher après chaque modification.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+14. GOOGLE SHEET — STRUCTURE ATTENDUE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Feuille "D3MAND Petitions" (CSV public) :
+  main,,<sigs>,300000
+  p2,,<sigs>,5000
+  hours,Heures investies,<valeur>,0
+  cost,Frais engages,<valeur>,0
+
+Pour mettre à jour les compteurs du site :
+  Changer la valeur en colonne C (3e colonne) des lignes hours et cost.
+  Le site relit le CSV à chaque chargement de page.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+15. TÂCHES EN ATTENTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[ ] Manus déploie la dernière version du branch claude/site-visual-design-5LZF6
+[ ] Manus copie guardian.png et destiny-logo.png sur le serveur de prod
+[ ] Vérifier visuellement le compte à rebours (pas de saut de chiffres) sur le live
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FIN DE SYNTHÈSE
