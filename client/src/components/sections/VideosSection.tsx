@@ -7,6 +7,7 @@ import { useLang } from "@/contexts/LanguageContext";
 type VideoEntry = { id: string; url: string; short?: boolean };
 
 const FAREWELL: VideoEntry[] = [
+  { id: "u0ciAWNbvc8", url: "https://youtube.com/shorts/u0ciAWNbvc8", short: true },
   { id: "B7yh77LOd24", url: "https://youtube.com/shorts/B7yh77LOd24", short: true },
   { id: "QXr_AlUAsU8", url: "https://youtube.com/shorts/QXr_AlUAsU8", short: true },
   { id: "NZu-0A1rG7c", url: "https://youtube.com/shorts/NZu-0A1rG7c", short: true },
