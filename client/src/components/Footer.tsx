@@ -55,9 +55,9 @@ export default function Footer() {
             href="https://ko-fi.com/bunkerd3mandhub"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-[var(--gold)]/20 px-4 py-2 font-mono text-[0.6rem] uppercase tracking-[0.25em] text-[var(--muted-foreground)]/60 transition-all hover:border-[var(--gold)]/40 hover:text-[var(--gold-dim)]"
+            className="inline-flex items-center gap-2 border-2 border-[var(--flame)]/60 px-4 py-2 font-mono text-[0.6rem] uppercase tracking-[0.25em] text-[var(--flame)] transition-all hover:border-[var(--flame)] hover:text-[var(--flame)] hover:bg-[var(--flame)]/5"
           >
-            ♥ {T.footer.kofi}
+            ☕ Soutenez le hub avec un espresso
           </a>
         </div>
 
