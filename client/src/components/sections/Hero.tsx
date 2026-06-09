@@ -104,16 +104,7 @@ export default function Hero({ totalSignatures }: HeroProps) {
             {T.hero.cta1}
             <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
-          <a
-            href="#server-slam"
-            className="clip-bevel inline-flex items-center gap-2 bg-[var(--flame)] px-6 py-3 font-display text-[0.7rem] font-bold uppercase tracking-[0.2em] text-white transition-all hover:brightness-110 hover:-translate-y-0.5 active:scale-[0.98]"
-          >
-            <span className="relative inline-flex">
-              <span className="absolute inset-0 animate-ping rounded-full bg-white/60" />
-              <span className="relative size-1.5 rounded-full bg-white" />
-            </span>
-            {T.hero.cta2}
-          </a>
+
           <a
             href="#tools"
             className="clip-bevel inline-flex items-center gap-2 border border-[var(--gold-dim)] bg-transparent px-6 py-3 font-display text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--gold)] transition-all hover:border-[var(--gold)] hover:bg-[var(--gold)]/5 hover:-translate-y-0.5"
@@ -143,7 +134,6 @@ export default function Hero({ totalSignatures }: HeroProps) {
               {getSublabel(totalSignatures)}
             </div>
           </div>
-          <Metric value="9 juin" label={T.hero.serverSlam} />
           <Metric value="$3.6B" label={T.hero.buyout} />
           <Metric value="−$765M" label={T.hero.losses} accent="flame" />
         </div>
@@ -168,7 +158,6 @@ export default function Hero({ totalSignatures }: HeroProps) {
         >
           <span># MakeDestiny3</span>
           <span># D3MAND</span>
-          <span># ServerSlam</span>
         </div>
       </div>
 

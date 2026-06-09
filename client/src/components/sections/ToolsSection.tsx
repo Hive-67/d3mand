@@ -6,7 +6,7 @@ import { useReveal } from "@/hooks/useReveal";
 import { useLang } from "@/contexts/LanguageContext";
 import { MESSAGES, MESSAGES_EN, PLATFORM_LABELS, type Platform } from "@/lib/messages";
 
-const HASHTAGS = ["#Destiny3", "#MakeDestiny3", "#ServerSlam", "#D3MAND", "#BringBackDestiny"];
+const HASHTAGS = ["#Destiny3", "#MakeDestiny3", "#D3MAND", "#BringBackDestiny"];
 const EMBED_CODE = `<a href="https://d3mandhub.com/" target="_blank" style="display:inline-block;background:#C9A84C;color:#080A0E;font-family:monospace;font-weight:700;padding:12px 24px;text-decoration:none;letter-spacing:2px;font-size:12px;">✦ DESTINY 3 — D3MAND</a>`;
 
 export default function ToolsSection() {
@@ -174,7 +174,6 @@ export default function ToolsSection() {
         {/* Tool grid */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           <ToolCard icon={<BarChart3 className="size-5" />} title={cards[0].title} desc={cards[0].desc} cta={{ href: "#petitions", label: cards[0].cta }} />
-          <ToolCard icon={<Calendar className="size-5" />} title={cards[1].title} desc={cards[1].desc} cta={{ href: "#server-slam", label: cards[1].cta, variant: "flame" }} />
           <ToolCard icon={<Mic className="size-5" />} title={cards[2].title} desc={cards[2].desc} cta={{ href: "#arguments", label: cards[2].cta }} />
           <ToolCard icon={<Mail className="size-5" />} title={cards[3].title} desc={cards[3].desc} action={() => { setPlatform("sony"); document.getElementById("tools")?.scrollIntoView({ behavior: "smooth" }); }} actionLabel={cards[3].cta} />
           <ToolCard icon={<Link2 className="size-5" />} title={cards[4].title} desc={cards[4].desc} action={copyUrl} actionLabel={cards[4].cta} />

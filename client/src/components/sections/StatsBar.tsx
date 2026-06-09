@@ -28,7 +28,6 @@ export default function StatsBar({ mainSigs }: Props) {
         <Item value="$3.6B" label={T.stats.buyout} />
         <Item value="-$765M" label={T.stats.losses} color="var(--flame)" />
         <Item value="12 ans" label={T.stats.timeline} />
-        <Item value="9 juin" label={T.stats.serverSlam} />
       </div>
     </div>
   );
