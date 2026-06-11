@@ -14,6 +14,7 @@ import RasputinTerminal from "@/components/RasputinTerminal";
 import ClassifiedDossier from "@/components/ClassifiedDossier";
 import AboutSection from "@/components/sections/AboutSection";
 import ArgumentsSection from "@/components/sections/ArgumentsSection";
+import ArticleSection from "@/components/sections/ArticleSection";
 import Hero from "@/components/sections/Hero";
 import GuestbookSection from "@/components/sections/GuestbookSection";
 import VideosSection from "@/components/sections/VideosSection";
@@ -113,6 +114,7 @@ export default function Home() {
         <Hero totalSignatures={total} />
         <AboutSection />
         <StatsBar mainSigs={sigs.main} />
+        <ArticleSection />
         <PetitionsSection sigs={sigs} />
         <ArgumentsSection />
         <ToolsSection />
