@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import Starfield from "@/components/Starfield";
 import SetupModal from "@/components/SetupModal";
+import DestinyMap from "@/components/DestinyMap";
 import AboutSection from "@/components/sections/AboutSection";
 import ArgumentsSection from "@/components/sections/ArgumentsSection";
 import Hero from "@/components/sections/Hero";
@@ -16,6 +17,7 @@ import VideosSection from "@/components/sections/VideosSection";
 import PetitionsSection from "@/components/sections/PetitionsSection";
 import StatsBar from "@/components/sections/StatsBar";
 import ToolsSection from "@/components/sections/ToolsSection";
+import { useKonamiCode } from "@/hooks/useKonamiCode";
 import {
   fetchSheet,
   FALLBACK_SIGS,
@@ -35,6 +37,8 @@ export default function Home() {
   const [syncState, setSyncState] = useState<SyncState>("loading");
   const [syncLabel, setSyncLabel] = useState("Synchronisation...");
   const [setupOpen, setSetupOpen] = useState(false);
+  const [directorOpen, setDirectorOpen] = useState(false);
+  useKonamiCode(() => setDirectorOpen(true));
 
   const total = useMemo(
     () => Object.values(sigs).reduce((a, b) => a + b, 0),
@@ -115,6 +119,8 @@ export default function Home() {
         onClose={() => setSetupOpen(false)}
         onApply={onApply}
       />
+
+      {directorOpen && <DestinyMap onClose={() => setDirectorOpen(false)} />}
     </div>
   );
 }
