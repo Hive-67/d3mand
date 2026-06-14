@@ -17,7 +17,7 @@ export default function ArticleSection() {
         {/* Hero Section */}
         <div className="mb-16 text-center" ref={reveal}>
           <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 border border-[var(--gold)]/20 rounded-full bg-[var(--gold)]/5">
-            <span className="text-[var(--gold)] text-sm font-mono uppercase tracking-wider">⚡ Actualité</span>
+            <span className="text-[var(--gold)] text-sm font-mono uppercase tracking-wider">⚡ Article</span>
           </div>
           <h2 className="font-display text-4xl lg:text-5xl font-black mb-4 text-[var(--gold)] text-glow-gold">
             Warframe entre dans le combat pour Destiny
@@ -26,8 +26,6 @@ export default function ArticleSection() {
             Le 17 juin, la communauté Warframe tend la main aux Gardiens. Un geste rare. Un signal fort.
           </p>
           <div className="flex items-center justify-center gap-4 text-xs text-[var(--muted-foreground)]/70 font-mono uppercase tracking-wider">
-            <span>Le Bunker</span>
-            <span className="opacity-40">•</span>
             <span>11 Juin 2026</span>
             <span className="opacity-40">•</span>
             <span>D3MAND HUB</span>
@@ -171,40 +169,25 @@ export default function ArticleSection() {
           {/* Section 4 */}
           <article className="space-y-4" ref={reveal}>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-xs uppercase tracking-widest text-[var(--flame)] font-mono font-bold">Le Bunker</span>
+              <span className="text-xs uppercase tracking-widest text-[var(--flame)] font-mono font-bold">L'appel</span>
               <div className="flex-1 h-px bg-gradient-to-r from-[var(--flame)] to-transparent" />
             </div>
             <h3 className="font-display text-2xl font-bold text-[var(--gold)]">
-              Notre rôle dans tout ça
+              Soyez là. Jouez. Montrez-vous.
             </h3>
             <div className="space-y-4 text-[var(--muted-foreground)] text-sm leading-relaxed">
               <p>
-                Le Bunker est à l'initiative de <span className="text-[var(--gold)] font-semibold">D3MAND Hub</span> — la plateforme qui centralise pétitions, outils et ressources
-                pour que la voix de la communauté francophone soit entendue. Nous n'avons pas créé le mouvement. Nous lui avons donné une maison.
+                L'event Warframe du 17 juin est exactement le type de signal que Sony et Bungie ne peuvent pas ignorer.
+                Ce n'est pas un événement ordinaire. C'est une déclaration. Une preuve que la communauté existe, qu'elle s'unit, qu'elle refuse l'oubli.
               </p>
               <p>
-                L'event Warframe du 17 juin est exactement le type de signal que Sony et Bungie ne peuvent pas ignorer.
-                <span className="text-[var(--gold)] font-semibold"> Soyez là. Jouez. Montrez-vous.</span>
+                <span className="text-[var(--gold)] font-semibold">Soyez là. Jouez. Montrez-vous.</span>
               </p>
             </div>
           </article>
         </div>
 
-        {/* CTA */}
-        <div className="mt-16 p-8 bg-gradient-to-r from-[var(--gold)]/10 to-[var(--flame)]/10 border border-[var(--gold)]/20 rounded-lg text-center" ref={reveal}>
-          <h3 className="font-display text-2xl font-black text-[var(--gold)] mb-3">
-            Signez la pétition. Faites-vous entendre.
-          </h3>
-          <p className="text-[var(--muted-foreground)] text-sm mb-6">
-            380 000 signatures. L'objectif est en vue. Chaque Gardien compte.
-          </p>
-          <a
-            href="#petitions"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--gold)] text-black font-bold uppercase tracking-wider rounded text-sm transition-all hover:bg-[var(--gold)]/90 hover:shadow-lg hover:shadow-[var(--gold)]/20"
-          >
-            🔗 Accéder aux pétitions
-          </a>
-        </div>
+
       </div>
     </section>
   );
