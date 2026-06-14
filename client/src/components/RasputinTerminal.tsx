@@ -1,23 +1,34 @@
 /* D3MAND — Terminal Rasputin (secret: taper "rasputin") */
 import { useEffect, useRef, useState } from "react";
+import { MESSAGES } from "@/lib/messages";
 
 /* ─── QUIZ ─── */
 type Question = { q: string; opts: string[]; ans: number };
 const QUESTIONS: Question[] = [
   {
-    q: "Comment appelle-t-on le compagnon IA qui accompagne chaque Gardien ?",
-    opts: ["A) Exo", "B) Spectre", "C) Drifter", "D) Titan"],
+    q: "Comment s'appelle la grande sphère blanche qui protège la Dernière Cité ?",
+    opts: ["A) La Cité", "B) Le Voyageur", "C) La Sphère Céleste", "D) L'Arche"],
     ans: 1,
   },
   {
-    q: "Quelle organisation a attaqué la Dernière Cité pendant la Guerre Écarlate ?",
-    opts: ["A) Les Déchus", "B) Les Vex", "C) La Légion Écarlate", "D) La Ruche"],
+    q: "Quel est le nom de l'agent mystérieux qui vend des armes exotiques uniquement le week-end ?",
+    opts: ["A) Le Drifter", "B) Banshee-44", "C) Xur", "D) Zavala"],
     ans: 2,
   },
   {
-    q: "Combien de classes de Gardiens existe-t-il dans Destiny ?",
-    opts: ["A) 2", "B) 3", "C) 4", "D) 5"],
+    q: "Comment s'appelle la dernière grande extension de Destiny 2 ?",
+    opts: ["A) La Forme Finale", "B) Au-delà de la Lumière", "C) La Reine des Sorcières", "D) L'Hérésie Sombre"],
+    ans: 0,
+  },
+  {
+    q: "Quel est le nom du chef Cabal qui a envahi la Dernière Cité dans Destiny 2 ?",
+    opts: ["A) Calus", "B) Dominus Ghaul", "C) Bracus Zahn", "D) Valus Ta'aurc"],
     ans: 1,
+  },
+  {
+    q: "Comment appelle-t-on les ennemis robotiques capables de manipuler le temps ?",
+    opts: ["A) Les Déchus", "B) La Ruche", "C) Les Cabal", "D) Les Vex"],
+    ans: 3,
   },
 ];
 
@@ -385,7 +396,7 @@ export default function RasputinTerminal({ onClose }: { onClose: () => void }) {
                 flexShrink: 0, textAlign: "center",
               }}>
                 <a
-                  href={`mailto:press@sie.sony.com?subject=${encodeURIComponent("La communauté Destiny demande Destiny 3")}&body=${encodeURIComponent("Madame, Monsieur,\n\nJe fais partie des milliers de joueurs qui ont signé la pétition pour Destiny 3.\n\nDestiny est une franchise qui mérite une suite. Nous sommes prêts.\n\nLa pétition : https://chng.it/GxQHNMQCH6\n\nCordialement,\nUn Gardien")}`}
+                  href={`mailto:press@sie.sony.com?subject=${encodeURIComponent("Lettre ouverte — Développement de Destiny 3")}&body=${encodeURIComponent(MESSAGES.sony)}`}
                   style={{ textDecoration: "none" }}
                 >
                   <button
