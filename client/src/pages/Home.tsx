@@ -9,6 +9,9 @@ import Nav from "@/components/Nav";
 import Starfield from "@/components/Starfield";
 import SetupModal from "@/components/SetupModal";
 import DestinyMap from "@/components/DestinyMap";
+import GhostCompanion from "@/components/GhostCompanion";
+import RasputinTerminal from "@/components/RasputinTerminal";
+import ClassifiedDossier from "@/components/ClassifiedDossier";
 import AboutSection from "@/components/sections/AboutSection";
 import ArgumentsSection from "@/components/sections/ArgumentsSection";
 import Hero from "@/components/sections/Hero";
@@ -18,6 +21,7 @@ import PetitionsSection from "@/components/sections/PetitionsSection";
 import StatsBar from "@/components/sections/StatsBar";
 import ToolsSection from "@/components/sections/ToolsSection";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
+import { useSecretWord } from "@/hooks/useSecretWord";
 import {
   fetchSheet,
   FALLBACK_SIGS,
@@ -38,7 +42,11 @@ export default function Home() {
   const [syncLabel, setSyncLabel] = useState("Synchronisation...");
   const [setupOpen, setSetupOpen] = useState(false);
   const [directorOpen, setDirectorOpen] = useState(false);
+  const [rasputinOpen, setRasputinOpen] = useState(false);
+  const [dossierOpen, setDossierOpen] = useState(false);
   useKonamiCode(() => setDirectorOpen(true));
+  useSecretWord("rasputin", () => setRasputinOpen(true));
+  useSecretWord("guardian", () => setDossierOpen(true));
 
   const total = useMemo(
     () => Object.values(sigs).reduce((a, b) => a + b, 0),
@@ -120,7 +128,10 @@ export default function Home() {
         onApply={onApply}
       />
 
-      {directorOpen && <DestinyMap onClose={() => setDirectorOpen(false)} />}
+      <GhostCompanion />
+      {directorOpen  && <DestinyMap         onClose={() => setDirectorOpen(false)} />}
+      {rasputinOpen  && <RasputinTerminal   onClose={() => setRasputinOpen(false)} />}
+      {dossierOpen   && <ClassifiedDossier  onClose={() => setDossierOpen(false)} />}
     </div>
   );
 }
