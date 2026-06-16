@@ -42,7 +42,8 @@ export default function Home() {
   const [setupOpen, setSetupOpen] = useState(false);
   const [rasputinOpen, setRasputinOpen] = useState(false);
   const [dossierOpen, setDossierOpen] = useState(false);
-  useSecretWord("rasputin", () => setRasputinOpen(true));
+  useSecretWord("rasputin",   () => setRasputinOpen(true));
+  useSecretWord("raspoutine", () => setRasputinOpen(true));
   useSecretWord("guardian", () => setDossierOpen(true));
 
   const total = useMemo(

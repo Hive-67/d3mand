@@ -1,12 +1,32 @@
 /* D3MAND — Footer */
+import { useState, useEffect } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 import { useVisitorCount } from "@/hooks/useVisitorCount";
 import { useHubStats } from "@/hooks/useHubStats";
+
+const HOF_KEY = "d3mand_hall_of_fame";
+
+function useHallOfFame() {
+  const [names, setNames] = useState<string[]>(() => {
+    try { return JSON.parse(localStorage.getItem(HOF_KEY) || "[]"); } catch { return []; }
+  });
+  useEffect(() => {
+    const onStorage = () => {
+      try { setNames(JSON.parse(localStorage.getItem(HOF_KEY) || "[]")); } catch {}
+    };
+    window.addEventListener("storage", onStorage);
+    // Also poll every 2s in case same tab updates
+    const id = setInterval(onStorage, 2000);
+    return () => { window.removeEventListener("storage", onStorage); clearInterval(id); };
+  }, []);
+  return names;
+}
 
 export default function Footer() {
   const { T } = useLang();
   const visitors = useVisitorCount();
   const { hours, cost } = useHubStats();
+  const hofNames = useHallOfFame();
 
   return (
     <footer className="border-t border-[var(--gold)]/15 bg-[var(--dark)] py-14">
@@ -61,7 +81,24 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="mt-6 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-[var(--muted-foreground)]/50">
+        {/* Hall of Fame */}
+        {hofNames.length > 0 && (
+          <div className="mt-6 max-w-2xl w-full border border-[#cc3300]/20 bg-[#0a0200] px-4 py-3">
+            <div className="font-mono text-[0.42rem] uppercase tracking-[0.35em] text-[#cc3300]/70 mb-2">
+              ⬡ Gardiens enregistrés par Raspoutine
+            </div>
+            <div className="font-mono text-[0.48rem] tracking-[0.15em] text-[#ff6622]/80 leading-relaxed">
+              {hofNames.join(" · ")}
+            </div>
+          </div>
+        )}
+
+        {/* Indice secret Rasputin */}
+        <div className="mt-5 font-mono text-[0.42rem] uppercase tracking-[0.4em] text-[var(--muted-foreground)]/25 select-none cursor-default">
+          // SIGNAL DÉTECTÉ — PROTOCOLE IKELOS EN VEILLE //
+        </div>
+
+        <div className="mt-4 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-[var(--muted-foreground)]/50">
           {T.footer.credit}
         </div>
       </div>

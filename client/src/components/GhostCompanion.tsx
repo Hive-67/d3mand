@@ -124,7 +124,11 @@ export default function GhostCompanion() {
             }}
           >
             <span style={{ color:"#00ccff", fontWeight:700 }}>Spectre // </span>
-            {QUOTES[quoteIdx]}
+            {QUOTES[quoteIdx].split(/(Destiny 3)/g).map((part, i) =>
+              part === "Destiny 3"
+                ? <span key={i} style={{ color:"#ff6600", fontWeight:700 }}>Destiny 3</span>
+                : part
+            )}
             <div style={{
               position:"absolute", bottom:-7, right:22,
               width:0, height:0,

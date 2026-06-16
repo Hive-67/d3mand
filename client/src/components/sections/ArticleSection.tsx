@@ -74,7 +74,7 @@ export default function ArticleSection() {
               <p>
                 Dans les jours suivants, les hashtags <span className="text-[var(--gold)] font-semibold">#SaveDestiny</span> et <span className="text-[var(--gold)] font-semibold">#WeWantDestiny3</span> ont explosé sur les réseaux sociaux.
                 Les créateurs de contenu, les développeurs de Bungie eux-mêmes, et même les doubleurs du jeu ont pris la parole.
-                La pétition officielle Destiny 3 frôle les <span className="text-[var(--gold)] font-semibold">380 000 signatures</span>.
+                La pétition officielle Destiny <span className="text-[var(--flame)] font-semibold">3</span> frôle les <span className="text-[var(--gold)] font-semibold">380 000 signatures</span>.
               </p>
             </div>
           </article>

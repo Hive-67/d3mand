@@ -411,13 +411,26 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
 }
 
 /* ─── MAIN COMPONENT ─── */
-type MainPhase = "quiz" | "fail" | "snake-intro" | "snake" | "terminal";
+type MainPhase = "quiz" | "fail" | "snake-intro" | "snake" | "hall-of-fame" | "terminal";
+
+const HOF_KEY = "d3mand_hall_of_fame";
+
+function saveToHallOfFame(name: string) {
+  try {
+    const existing: string[] = JSON.parse(localStorage.getItem(HOF_KEY) || "[]");
+    if (!existing.includes(name)) {
+      existing.push(name);
+      localStorage.setItem(HOF_KEY, JSON.stringify(existing));
+    }
+  } catch {}
+}
 
 export default function RasputinTerminal({ onClose }: { onClose: () => void }) {
   const [phase, setPhase] = useState<MainPhase>("quiz");
   const [curQ, setCurQ] = useState(0);
   const [visible, setVisible] = useState<Line[]>([]);
   const [showStrike, setShowStrike] = useState(false);
+  const [blazeInput, setBlazeInput] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
@@ -611,7 +624,64 @@ export default function RasputinTerminal({ onClose }: { onClose: () => void }) {
 
         {/* ── SNAKE ── */}
         {phase === "snake" && (
-          <SnakeGame onWin={() => setPhase("terminal")} />
+          <SnakeGame onWin={() => setPhase("hall-of-fame")} />
+        )}
+
+        {/* ── HALL OF FAME ── */}
+        {phase === "hall-of-fame" && (
+          <div style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center", padding:24 }}>
+            <div style={{ maxWidth:520, width:"100%", border:"1px solid #cc3300", padding:"32px 36px", background:"rgba(30,4,0,0.85)", textAlign:"center" }}>
+              <div style={{ fontSize:"0.4rem", letterSpacing:"0.45em", color:"#cc3300", textTransform:"uppercase", marginBottom:8 }}>
+                ⬡ Identité Confirmée
+              </div>
+              <div style={{ fontSize:"0.9rem", color:"#44ff88", letterSpacing:"0.15em", textTransform:"uppercase", marginBottom:6 }}>
+                Raspoutine t'a enregistré, Gardien.
+              </div>
+              <div style={{ fontSize:"0.48rem", color:"rgba(255,140,60,0.8)", lineHeight:1.8, marginBottom:24, letterSpacing:"0.05em" }}>
+                Entre ton blaze pour rejoindre les rangs des Gardiens
+                qui ont prouvé leur valeur au Protocole Ikelos.
+              </div>
+              <input
+                autoFocus
+                value={blazeInput}
+                onChange={(e) => setBlazeInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && blazeInput.trim()) {
+                    saveToHallOfFame(blazeInput.trim());
+                    setPhase("terminal");
+                  }
+                }}
+                placeholder="Guardian_1234…"
+                style={{
+                  width:"100%", background:"rgba(0,20,0,0.6)", border:"1px solid #441100",
+                  color:"#ff8800", fontFamily:"inherit", fontSize:"0.65rem",
+                  letterSpacing:"0.1em", padding:"10px 14px", outline:"none",
+                  marginBottom:12, textAlign:"center",
+                }}
+              />
+              <button
+                onClick={() => {
+                  if (blazeInput.trim()) {
+                    saveToHallOfFame(blazeInput.trim());
+                    setPhase("terminal");
+                  }
+                }}
+                style={{
+                  background:"rgba(100,20,0,0.3)", border:"1px solid #cc4400",
+                  color:"#ff6622", fontFamily:"inherit", fontSize:"0.55rem",
+                  letterSpacing:"0.2em", padding:"12px 24px", cursor:"pointer",
+                  textTransform:"uppercase", transition:"all 0.2s", width:"100%",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background="rgba(180,40,0,0.4)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background="rgba(100,20,0,0.3)"; }}
+              >
+                ▶ Valider — Accéder au Terminal
+              </button>
+              <div style={{ marginTop:10, fontSize:"0.38rem", color:"rgba(255,100,0,0.4)", letterSpacing:"0.15em" }}>
+                Appuie sur Entrée pour valider
+              </div>
+            </div>
+          </div>
         )}
 
         {/* ── TERMINAL ── */}

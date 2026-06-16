@@ -46,7 +46,7 @@ export default function Hero({ totalSignatures }: HeroProps) {
             animationDelay: "0.15s",
           }}
         >
-          Destiny 3
+          Destiny <span style={{ color: "var(--flame)" }}>3</span>
         </h1>
 
         {/* Subtitle */}
@@ -54,7 +54,7 @@ export default function Hero({ totalSignatures }: HeroProps) {
           className="mt-3 font-mono text-xs sm:text-sm uppercase tracking-[0.5em] text-[var(--muted-foreground)] animate-fade-up"
           style={{ animationDelay: "0.25s" }}
         >
-          We demand Destiny 3
+          We demand Destiny <span style={{ color: "var(--flame)" }}>3</span>
         </div>
 
         {/* Divider */}
