@@ -12,7 +12,7 @@ const QUOTES = [
   "Sony écoute les chiffres. Donnons-leur des chiffres qu'ils ne peuvent pas ignorer.",
 ];
 
-/* ── Son Raspoutine ── */
+/* ── Son Rasputin ── */
 function playGhostSound() {
   const audio = new Audio("/sounds/rasputin.mp3");
   audio.volume = 0.55;

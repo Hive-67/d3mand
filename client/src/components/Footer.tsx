@@ -85,7 +85,7 @@ export default function Footer() {
         {hofNames.length > 0 && (
           <div className="mt-6 max-w-2xl w-full border border-[#cc3300]/20 bg-[#0a0200] px-4 py-3">
             <div className="font-mono text-[0.42rem] uppercase tracking-[0.35em] text-[#cc3300]/70 mb-2">
-              ⬡ Gardiens enregistrés par Raspoutine
+              ⬡ Gardiens enregistrés par Rasputin
             </div>
             <div className="font-mono text-[0.48rem] tracking-[0.15em] text-[#ff6622]/80 leading-relaxed">
               {hofNames.join(" · ")}

@@ -397,7 +397,7 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
           }}>
             <div style={{ fontSize: "0.9rem", color: "#44ff88", letterSpacing: "0.2em" }}>✓ SEUIL CRITIQUE ATTEINT</div>
             <div style={{ fontSize: "0.42rem", color: "rgba(80,255,130,0.7)", letterSpacing: "0.1em" }}>
-              Terminal Raspoutine déverrouillé...
+              Terminal Rasputin déverrouillé...
             </div>
           </div>
         )}
@@ -635,7 +635,7 @@ export default function RasputinTerminal({ onClose }: { onClose: () => void }) {
                 ⬡ Identité Confirmée
               </div>
               <div style={{ fontSize:"0.9rem", color:"#44ff88", letterSpacing:"0.15em", textTransform:"uppercase", marginBottom:6 }}>
-                Raspoutine t'a enregistré, Gardien.
+                Rasputin t'a enregistré, Gardien.
               </div>
               <div style={{ fontSize:"0.48rem", color:"rgba(255,140,60,0.8)", lineHeight:1.8, marginBottom:24, letterSpacing:"0.05em" }}>
                 Entre ton blaze pour rejoindre les rangs des Gardiens
