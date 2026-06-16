@@ -143,7 +143,7 @@ export default function GuestbookSection() {
                 <p className="text-center text-xs text-red-400">{T.guestbook.error}</p>
               )}
               {!scriptUrl && (
-                <p className="text-center font-mono text-[0.55rem] text-[var(--muted-foreground)]/50">
+                <p className="text-center font-mono text-[0.55rem] text-[var(--flame)] font-bold tracking-[0.15em]">
                   {T.guestbook.notConfigured}
                 </p>
               )}
