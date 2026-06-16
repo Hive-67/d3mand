@@ -80,11 +80,23 @@ const LINES: Line[] = [
   { text: "ВСЕХ АКТИВИРОВАТЬ — ACTIVER TOUS LES GARDIENS.", color:"#ff3300", delay:16600, showStrike:true },
 ];
 
-/* ─── SON RASPOUTINE ─── */
+/* ─── SONS ─── */
 function playRasputin() {
   const audio = new Audio("/sounds/rasputin.mp3");
   audio.volume = 0.65;
   audio.play().catch(() => playRasputinSynth());
+}
+
+function playLegendaryEngram() {
+  const audio = new Audio("/sounds/legendary_engram.mp3");
+  audio.volume = 0.7;
+  audio.play().catch(() => {});
+}
+
+function playExoticEngram() {
+  const audio = new Audio("/sounds/exotic_engram.mp3");
+  audio.volume = 0.85;
+  audio.play().catch(() => {});
 }
 
 function playRasputinSynth() {
@@ -230,9 +242,10 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
 
     g.dir = g.nextDir;
     const head = g.snake[0];
-    const nh = { x: head.x + g.dir.x, y: head.y + g.dir.y };
+    const raw = { x: head.x + g.dir.x, y: head.y + g.dir.y };
+    const nh = { x: ((raw.x % COLS) + COLS) % COLS, y: ((raw.y % ROWS) + ROWS) % ROWS };
 
-    if (nh.x < 0 || nh.x >= COLS || nh.y < 0 || nh.y >= ROWS || g.snake.some((s) => s.x === nh.x && s.y === nh.y)) {
+    if (g.snake.some((s) => s.x === nh.x && s.y === nh.y)) {
       g.phase = "over";
       setSnakePhase("over");
       return;
@@ -246,6 +259,7 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
       setDisplayScore(g.score);
       if ((g.score / FOOD_PTS) % 5 === 0) g.speed = Math.max(TICK_MIN, g.speed - 10);
       if (g.score >= WIN_SCORE) {
+        playExoticEngram();
         g.phase = "exploding";
         setSnakePhase("exploding");
         setTimeout(() => {
@@ -255,6 +269,8 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
           setTimeout(() => onWinRef.current(), 2000);
         }, 1500);
         return;
+      } else {
+        playLegendaryEngram();
       }
     } else {
       ns.pop();
@@ -395,7 +411,7 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
 }
 
 /* ─── MAIN COMPONENT ─── */
-type MainPhase = "quiz" | "fail" | "snake" | "terminal";
+type MainPhase = "quiz" | "fail" | "snake-intro" | "snake" | "terminal";
 
 export default function RasputinTerminal({ onClose }: { onClose: () => void }) {
   const [phase, setPhase] = useState<MainPhase>("quiz");
@@ -434,7 +450,7 @@ export default function RasputinTerminal({ onClose }: { onClose: () => void }) {
   function answer(i: number) {
     if (i === QUESTIONS[curQ].ans) {
       if (curQ + 1 >= QUESTIONS.length) {
-        setPhase("snake");
+        setPhase("snake-intro");
       } else {
         setCurQ((q) => q + 1);
       }
@@ -556,6 +572,38 @@ export default function RasputinTerminal({ onClose }: { onClose: () => void }) {
                 onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor="#661100"; (e.currentTarget as HTMLButtonElement).style.color="#882200"; }}
               >
                 ↺ Recommencer l'identification
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* ── SNAKE INTRO ── */}
+        {phase === "snake-intro" && (
+          <div style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center", padding:24 }}>
+            <div style={{ maxWidth:560, width:"100%", border:"1px solid #661100", padding:"32px 36px", background:"rgba(30,4,0,0.6)" }}>
+              <div style={{ fontSize:"0.4rem", letterSpacing:"0.45em", color:"#cc3300", textTransform:"uppercase", marginBottom:6 }}>
+                Protocole Ikelos — Phase 2
+              </div>
+              <div style={{ fontSize:"1rem", color:"#ff6622", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:20 }}>
+                Le Verre Divin
+              </div>
+              <div style={{ fontSize:"0.5rem", lineHeight:2, color:"rgba(255,140,60,0.85)", fontFamily:"var(--font-mono, 'Courier New', monospace)", marginBottom:24 }}>
+                <div style={{ color:"#cc4400", marginBottom:8 }}>RASPOUTINE : TRANSMISSION CLASSIFIÉE</div>
+                <div>{">"} LE VERRE DIVIN EST UN EXOTIQUE DE MON INVENTION.</div>
+                <div>{">"} EN APPARENCE : UNE GRENADE CORROMPUE ORDINAIRE.</div>
+                <div>{">"} EN RÉALITÉ : UN PIÈGE QUANTIQUE CONÇU POUR ABSORBER</div>
+                <div style={{ paddingLeft:16 }}>DES FRAGMENTS D'ÉNERGIE PARACAUSALE.</div>
+                <div style={{ marginTop:8 }}>{">"} IL DOIT CONSOMMER DES <span style={{ color:"#ffcc00" }}>ANAGRAMMES PIÉGÉES</span>.</div>
+                <div>{">"} À <span style={{ color:"#ffcc00" }}>4 000 FRAGMENTS</span> — EXPLOSION CONTRÔLÉE.</div>
+                <div>{">"} LES MURS NE SONT QUE DES ILLUSIONS POUR LUI.</div>
+              </div>
+              <button
+                onClick={() => setPhase("snake")}
+                style={{ background:"rgba(100,20,0,0.3)", border:"1px solid #cc4400", color:"#ff6622", fontFamily:"inherit", fontSize:"0.55rem", letterSpacing:"0.2em", padding:"12px 24px", cursor:"pointer", textTransform:"uppercase", transition:"all 0.2s", width:"100%" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background="rgba(180,40,0,0.4)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background="rgba(100,20,0,0.3)"; }}
+              >
+                ▶ COMMENCER L'ABSORPTION
               </button>
             </div>
           </div>
