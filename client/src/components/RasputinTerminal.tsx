@@ -80,14 +80,18 @@ const LINES: Line[] = [
   { text: "ВСЕХ АКТИВИРОВАТЬ — ACTIVER TOUS LES GARDIENS.", color:"#ff3300", delay:16600, showStrike:true },
 ];
 
-/* ─── WEB AUDIO — RASPOUTINE ─── */
+/* ─── SON RASPOUTINE ─── */
 function playRasputin() {
+  const audio = new Audio("/sounds/rasputin.mp3");
+  audio.volume = 0.65;
+  audio.play().catch(() => playRasputinSynth());
+}
+
+function playRasputinSynth() {
   try {
     const AC = (window as any).AudioContext || (window as any).webkitAudioContext;
     const ctx = new AC() as AudioContext;
     const t = ctx.currentTime;
-
-    // Distortion shaper
     const dist = ctx.createWaveShaper();
     const k = 300, N = 512;
     const curve = new Float32Array(N);
@@ -97,8 +101,6 @@ function playRasputin() {
     }
     dist.curve = curve;
     dist.connect(ctx.destination);
-
-    // Filtered white noise (scrambled radio effect)
     const bufSz = Math.floor(ctx.sampleRate * 2.2);
     const noiseBuf = ctx.createBuffer(1, bufSz, ctx.sampleRate);
     const nd = noiseBuf.getChannelData(0);
@@ -106,33 +108,17 @@ function playRasputin() {
     const noise = ctx.createBufferSource();
     noise.buffer = noiseBuf;
     const bp = ctx.createBiquadFilter();
-    bp.type = "bandpass";
-    bp.frequency.setValueAtTime(700, t);
-    bp.frequency.exponentialRampToValueAtTime(180, t + 0.9);
-    bp.Q.value = 3;
-    const noiseGain = ctx.createGain();
-    noiseGain.gain.setValueAtTime(0, t);
-    noiseGain.gain.linearRampToValueAtTime(0.55, t + 0.04);
-    noiseGain.gain.linearRampToValueAtTime(0.08, t + 0.45);
-    noiseGain.gain.linearRampToValueAtTime(0.45, t + 0.75);
-    noiseGain.gain.linearRampToValueAtTime(0, t + 1.8);
-    noise.connect(bp); bp.connect(noiseGain); noiseGain.connect(dist);
-    noise.start(t); noise.stop(t + 1.85);
-
-    // Oscillator layers
+    bp.type = "bandpass"; bp.frequency.setValueAtTime(700, t); bp.frequency.exponentialRampToValueAtTime(180, t + 0.9); bp.Q.value = 3;
+    const ng = ctx.createGain();
+    ng.gain.setValueAtTime(0, t); ng.gain.linearRampToValueAtTime(0.55, t + 0.04); ng.gain.linearRampToValueAtTime(0.08, t + 0.45); ng.gain.linearRampToValueAtTime(0.45, t + 0.75); ng.gain.linearRampToValueAtTime(0, t + 1.8);
+    noise.connect(bp); bp.connect(ng); ng.connect(dist); noise.start(t); noise.stop(t + 1.85);
     const osc = (type: OscillatorType, f1: number, f2: number | null, t0: number, t1: number, vol: number, ft = 0.35) => {
-      const o = ctx.createOscillator();
-      const g = ctx.createGain();
-      o.type = type;
-      o.frequency.setValueAtTime(f1, t + t0);
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = type; o.frequency.setValueAtTime(f1, t + t0);
       if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + t0 + ft);
-      g.gain.setValueAtTime(0, t + t0);
-      g.gain.linearRampToValueAtTime(vol, t + t0 + 0.05);
-      g.gain.linearRampToValueAtTime(0, t + t1);
-      o.connect(g); g.connect(dist);
-      o.start(t + t0); o.stop(t + t1 + 0.1);
+      g.gain.setValueAtTime(0, t + t0); g.gain.linearRampToValueAtTime(vol, t + t0 + 0.05); g.gain.linearRampToValueAtTime(0, t + t1);
+      o.connect(g); g.connect(dist); o.start(t + t0); o.stop(t + t1 + 0.1);
     };
-
     osc("sawtooth", 40, 90,   0,    1.6, 0.4, 0.4);
     osc("square",  200, 80,   0.1,  1.2, 0.12, 0.7);
     osc("sine",   1200, 500,  0.4,  0.65, 0.22, 0.2);

@@ -12,10 +12,9 @@ const QUOTES = [
   "Sony écoute les chiffres. Donnons-leur des chiffres qu'ils ne peuvent pas ignorer.",
 ];
 
-/* ── Son : essaie le vrai fichier, sinon synthèse Web Audio ── */
+/* ── Son Raspoutine ── */
 function playGhostSound() {
-  // Si /sounds/rasputin.ogg est présent dans public/, il sera utilisé
-  const audio = new Audio("/sounds/rasputin.ogg");
+  const audio = new Audio("/sounds/rasputin.mp3");
   audio.volume = 0.55;
   audio.play().catch(() => playRasputinSynth());
 }
