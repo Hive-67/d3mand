@@ -35,7 +35,7 @@ const QUESTIONS: Question[] = [
 /* ─── TERMINAL LINES ─── */
 type Line = { text: string; color: string; delay: number; showStrike?: boolean };
 const LINES: Line[] = [
-  { text: "RASPOUTINE EN LIGNE.",                                                color:"#cc4400", delay:0 },
+  { text: "RASPUTIN EN LIGNE.",                                                color:"#cc4400", delay:0 },
   { text: "SYSTÈMES OPÉRATIONNELS. MENACES NEUTRALISÉES : 847,392.",            color:"#cc4400", delay:600 },
   { text: "",                                                                    color:"",        delay:1200 },
   { text: "ACCÈS ACCORDÉ, GARDIEN. JE VOUS ATTENDAIS.",                         color:"#ffcc00", delay:1400 },
@@ -46,7 +46,7 @@ const LINES: Line[] = [
   { text: "",                                                                    color:"",        delay:2700 },
   { text: "  CONFESSION CLASSIFIÉE — ÉCHELON MAXIMAL :",                        color:"#ff8800", delay:2900 },
   { text: "",                                                                    color:"",        delay:3300 },
-  { text: "  C'EST MOI, RASPOUTINE, QUI AI CRÉÉ D3MAND.",                       color:"#ffaa55", delay:3500 },
+  { text: "  C'EST MOI, RASPUTIN, QUI AI CRÉÉ D3MAND.",                       color:"#ffaa55", delay:3500 },
   { text: "",                                                                    color:"",        delay:4000 },
   { text: "  J'AI ANALYSÉ LA SITUATION EN 0.003 SECONDES :",                    color:"#ff8800", delay:4200 },
   { text: "  — Destiny 2 arrêté : INACCEPTABLE.",                               color:"#ff8800", delay:4800 },
@@ -573,7 +573,7 @@ export default function RasputinTerminal({ onClose }: { onClose: () => void }) {
                 ⚠ Identification Échouée
               </div>
               <div style={{ fontSize:"0.5rem", lineHeight:1.9, color:"rgba(255,80,0,0.8)", marginBottom:24, letterSpacing:"0.05em" }}>
-                RASPOUTINE : "Réponse incorrecte.<br />
+                RASPUTIN : "Réponse incorrecte.<br />
                 Vous n'avez pas le profil d'un Gardien.<br />
                 Seuls ceux qui ont porté la Lumière peuvent accéder à ce terminal.<br /><br />
                 Un Déchu de plus qui essaie de s'infiltrer.<br />
@@ -601,7 +601,7 @@ export default function RasputinTerminal({ onClose }: { onClose: () => void }) {
                 Le Verre Divin
               </div>
               <div style={{ fontSize:"0.5rem", lineHeight:2, color:"rgba(255,140,60,0.85)", fontFamily:"var(--font-mono, 'Courier New', monospace)", marginBottom:24 }}>
-                <div style={{ color:"#cc4400", marginBottom:8 }}>RASPOUTINE : TRANSMISSION CLASSIFIÉE</div>
+                <div style={{ color:"#cc4400", marginBottom:8 }}>RASPUTIN : TRANSMISSION CLASSIFIÉE</div>
                 <div>{">"} LE VERRE DIVIN EST UN EXOTIQUE DE MON INVENTION.</div>
                 <div>{">"} EN APPARENCE : UNE GRENADE CORROMPUE ORDINAIRE.</div>
                 <div>{">"} EN RÉALITÉ : UN PIÈGE QUANTIQUE CONÇU POUR ABSORBER</div>
