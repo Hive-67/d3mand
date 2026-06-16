@@ -8,7 +8,6 @@ import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import Starfield from "@/components/Starfield";
 import SetupModal from "@/components/SetupModal";
-import DestinyMap from "@/components/DestinyMap";
 import GhostCompanion from "@/components/GhostCompanion";
 import RasputinTerminal from "@/components/RasputinTerminal";
 import ClassifiedDossier from "@/components/ClassifiedDossier";
@@ -21,7 +20,6 @@ import VideosSection from "@/components/sections/VideosSection";
 import PetitionsSection from "@/components/sections/PetitionsSection";
 import StatsBar from "@/components/sections/StatsBar";
 import ToolsSection from "@/components/sections/ToolsSection";
-import { useKonamiCode } from "@/hooks/useKonamiCode";
 import { useSecretWord } from "@/hooks/useSecretWord";
 import {
   fetchSheet,
@@ -42,10 +40,8 @@ export default function Home() {
   const [syncState, setSyncState] = useState<SyncState>("loading");
   const [syncLabel, setSyncLabel] = useState("Synchronisation...");
   const [setupOpen, setSetupOpen] = useState(false);
-  const [directorOpen, setDirectorOpen] = useState(false);
   const [rasputinOpen, setRasputinOpen] = useState(false);
   const [dossierOpen, setDossierOpen] = useState(false);
-  useKonamiCode(() => setDirectorOpen(true));
   useSecretWord("rasputin", () => setRasputinOpen(true));
   useSecretWord("guardian", () => setDossierOpen(true));
 
@@ -131,7 +127,6 @@ export default function Home() {
       />
 
       <GhostCompanion />
-      {directorOpen  && <DestinyMap         onClose={() => setDirectorOpen(false)} />}
       {rasputinOpen  && <RasputinTerminal   onClose={() => setRasputinOpen(false)} />}
       {dossierOpen   && <ClassifiedDossier  onClose={() => setDossierOpen(false)} />}
     </div>
