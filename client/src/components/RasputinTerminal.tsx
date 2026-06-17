@@ -87,16 +87,35 @@ function playRasputin() {
   audio.play().catch(() => playRasputinSynth());
 }
 
+// Précharger les sons pour éviter le lag
+let legendaryAudio: HTMLAudioElement | null = null;
+let exoticAudio: HTMLAudioElement | null = null;
+
+function initAudio() {
+  if (!legendaryAudio) {
+    legendaryAudio = new Audio("/sounds/legendary_engram.mp3");
+    legendaryAudio.volume = 0.7;
+    legendaryAudio.preload = "auto";
+  }
+  if (!exoticAudio) {
+    exoticAudio = new Audio("/sounds/exotic_engram.mp3");
+    exoticAudio.volume = 0.85;
+    exoticAudio.preload = "auto";
+  }
+}
+
 function playLegendaryEngram() {
-  const audio = new Audio("/sounds/legendary_engram.mp3");
-  audio.volume = 0.7;
-  audio.play().catch(() => {});
+  if (legendaryAudio) {
+    legendaryAudio.currentTime = 0;
+    legendaryAudio.play().catch(() => {});
+  }
 }
 
 function playExoticEngram() {
-  const audio = new Audio("/sounds/exotic_engram.mp3");
-  audio.volume = 0.85;
-  audio.play().catch(() => {});
+  if (exoticAudio) {
+    exoticAudio.currentTime = 0;
+    exoticAudio.play().catch(() => {});
+  }
 }
 
 function playRasputinSynth() {
@@ -146,8 +165,8 @@ const COLS = 20;
 const ROWS = 15;
 const WIN_SCORE = 4000;
 const FOOD_PTS = 200;
-const TICK_START = 140;
-const TICK_MIN = 65;
+const TICK_START = 80; // ms par tick (plus rapide, plus fluide)
+const TICK_MIN = 40; // accélération max plus agressive
 
 type Pos = { x: number; y: number };
 type SnakePhase = "playing" | "over" | "exploding" | "won";
@@ -188,8 +207,13 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
 
   const [displayScore, setDisplayScore] = useState(0);
   const [snakePhase, setSnakePhase] = useState<SnakePhase>("playing");
+  const inputQueueRef = useRef<Array<{ x: number; y: number }>>([]);
 
   useEffect(() => { onWinRef.current = onWin; }, [onWin]);
+
+  useEffect(() => {
+    initAudio();
+  }, []);
 
   function draw() {
     const cv = canvasRef.current;
@@ -240,6 +264,10 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
     const g = G.current;
     if (g.phase !== "playing") return;
 
+    // Appliquer l'input en queue si disponible
+    if (inputQueueRef.current.length > 0) {
+      g.nextDir = inputQueueRef.current.shift()!;
+    }
     g.dir = g.nextDir;
     const head = g.snake[0];
     const raw = { x: head.x + g.dir.x, y: head.y + g.dir.y };
@@ -253,6 +281,8 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
 
     const ns = [nh, ...g.snake];
     if (nh.x === g.food.x && nh.y === g.food.y) {
+      // Jouer le son AVANT de mettre à jour le score
+      playLegendaryEngram();
       g.score += FOOD_PTS;
       g.food = randomFood(ns);
       g.snake = ns;
@@ -269,8 +299,6 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
           setTimeout(() => onWinRef.current(), 2000);
         }, 1500);
         return;
-      } else {
-        playLegendaryEngram();
       }
     } else {
       ns.pop();
@@ -312,12 +340,14 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
       if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) e.preventDefault();
       const g = G.current;
       if (g.phase !== "playing") return;
+      let newDir: { x: number; y: number } | null = null;
       switch (e.key) {
-        case "ArrowUp":    if (g.dir.y !==  1) g.nextDir = { x: 0, y: -1 }; break;
-        case "ArrowDown":  if (g.dir.y !== -1) g.nextDir = { x: 0, y:  1 }; break;
-        case "ArrowLeft":  if (g.dir.x !==  1) g.nextDir = { x: -1, y: 0 }; break;
-        case "ArrowRight": if (g.dir.x !== -1) g.nextDir = { x:  1, y: 0 }; break;
+        case "ArrowUp":    if (g.dir.y !==  1) newDir = { x: 0, y: -1 }; break;
+        case "ArrowDown":  if (g.dir.y !== -1) newDir = { x: 0, y:  1 }; break;
+        case "ArrowLeft":  if (g.dir.x !==  1) newDir = { x: -1, y: 0 }; break;
+        case "ArrowRight": if (g.dir.x !== -1) newDir = { x:  1, y: 0 }; break;
       }
+      if (newDir) inputQueueRef.current.push(newDir);
     };
 
     window.addEventListener("keydown", handleKey);
@@ -602,13 +632,13 @@ export default function RasputinTerminal({ onClose }: { onClose: () => void }) {
               </div>
               <div style={{ fontSize:"0.5rem", lineHeight:2, color:"rgba(255,140,60,0.85)", fontFamily:"var(--font-mono, 'Courier New', monospace)", marginBottom:24 }}>
                 <div style={{ color:"#cc4400", marginBottom:8 }}>RASPUTIN : TRANSMISSION CLASSIFIÉE</div>
-                <div>{">"} LE VERRE DIVIN EST UN EXOTIQUE DE MON INVENTION.</div>
-                <div>{">"} EN APPARENCE : UNE GRENADE CORROMPUE ORDINAIRE.</div>
-                <div>{">"} EN RÉALITÉ : UN PIÈGE QUANTIQUE CONÇU POUR ABSORBER</div>
-                <div style={{ paddingLeft:16 }}>DES FRAGMENTS D'ÉNERGIE PARACAUSALE.</div>
-                <div style={{ marginTop:8 }}>{">"} IL DOIT CONSOMMER DES <span style={{ color:"#ffcc00" }}>ANAGRAMMES PIÉGÉES</span>.</div>
-                <div>{">"} À <span style={{ color:"#ffcc00" }}>4 000 FRAGMENTS</span> — EXPLOSION CONTRÔLÉE.</div>
-                <div>{">"} LES MURS NE SONT QUE DES ILLUSIONS POUR LUI.</div>
+                <div>{">"}  LE VERRE DIVIN S'EST ÉCHAPPÉ DU JARDIN.</div>
+                <div>{">"}  IL EST DEVENU INCONTRÔLABLE. AFFAMÉ.</div>
+                <div>{">"}  IL FAUT LE NOURRIR D'ENGRAMMES PIÉGÉES</div>
+                <div style={{ paddingLeft:16 }}>POUR LE FAIRE EXPLOSER DE L'INTÉRIEUR.</div>
+                <div style={{ marginTop:8 }}>{">"}  À <span style={{ color:"#ffcc00" }}>4 000 FRAGMENTS</span> — DÉTONATION FINALE.</div>
+                <div>{">"}  LES MURS NE SONT QUE DES ILLUSIONS POUR LUI.</div>
+                <div>{">"}  GUIDE-LE JUSQU'À LA DESTRUCTION TOTALE.</div>
               </div>
               <button
                 onClick={() => setPhase("snake")}
