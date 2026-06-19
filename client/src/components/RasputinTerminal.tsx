@@ -276,12 +276,13 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
     if (g.snake.some((s) => s.x === nh.x && s.y === nh.y)) {
       g.phase = "over";
       setSnakePhase("over");
+      draw();
       return;
     }
 
     const ns = [nh, ...g.snake];
     if (nh.x === g.food.x && nh.y === g.food.y) {
-      // Jouer le son AVANT de mettre à jour le score
+      // Jouer le son SANS délai, avant toute mise à jour d'état
       playLegendaryEngram();
       g.score += FOOD_PTS;
       g.food = randomFood(ns);
@@ -292,9 +293,11 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
         playExoticEngram();
         g.phase = "exploding";
         setSnakePhase("exploding");
+        draw();
         setTimeout(() => {
           g.phase = "won";
           setSnakePhase("won");
+          draw();
           playRasputin();
           setTimeout(() => onWinRef.current(), 2000);
         }, 1500);
@@ -331,6 +334,9 @@ function SnakeGame({ onWin }: { onWin: () => void }) {
       if (G.current.phase === "playing" && time - lastTickRef.current >= G.current.speed) {
         lastTickRef.current = time;
         tick();
+      } else if (G.current.phase === "playing") {
+        // Redessiner à chaque frame même sans tick pour éviter le lag
+        draw();
       }
       rafRef.current = requestAnimationFrame(loop);
     };
@@ -480,6 +486,8 @@ export default function RasputinTerminal({ onClose }: { onClose: () => void }) {
     timersRef.current.forEach(clearTimeout);
     setVisible([]);
     setShowStrike(false);
+    // Déclencher le son Rasputin immédiatement à l'ouverture du terminal
+    playRasputin();
     timersRef.current = LINES.map((line) =>
       setTimeout(() => {
         setVisible((prev) => [...prev, line]);
